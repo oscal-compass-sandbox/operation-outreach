@@ -20,6 +20,8 @@ if [ -f "$README" ]; then
 fi
 
 esc() { sed -e 's/|/\\|/g' <<<"$1"; }
+# Smaller font (GitHub strips style attributes, but allows <small>); empty stays empty
+sm() { [ -n "$1" ] && printf '<small>%s</small>' "$1" || true; }
 
 table=$(mktemp)
 {
@@ -38,11 +40,12 @@ table=$(mktemp)
       li=$(jq -r 'if ((.blog // "") | test("linkedin\\.com"; "i")) then .blog else "" end' "$u")
     fi
     contact=""
-    [ -n "$email" ] && contact="[$email](mailto:$email)"
+    # U+200B before "@" lets long e-mail addresses wrap, keeping the table narrow
+    [ -n "$email" ] && contact="[${email/@/$'\u200b'@}](mailto:$email)"
     if [ -n "$li" ]; then
       contact="${contact:+$contact<br>}[linked-in]($li)"
     fi
-    echo "| $num | [$login](https://github.com/$login) | $(esc "$name") | $(esc "$org") | $contact | ${STATUS[$login]:-} |"
+    echo "| $num | $(sm "[$login](https://github.com/$login)") | $(sm "$(esc "$name")") | $(sm "$(esc "$org")") | $(sm "$contact") | ${STATUS[$login]:-} |"
   done < "$DATA_DIR/followers.txt"
 } > "$table"
 
