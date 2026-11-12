@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Build the followers table in README.md (between marker comments) from data/users/*.
 # Existing "Status" values in the README are preserved; new rows are blank.
-# Adopters are listed first (original order kept within each group).
+# Adopters are listed first; within each group folks from the same org are together
+# (alphabetical by org, no-org last, original order kept within an org).
 # A green dot (adopter) is computed from data/ADOPTERS.md and overrides a stored value.
 set -euo pipefail
 
@@ -60,18 +61,27 @@ is_adopter() {
   return 1
 }
 
+# Normalize org name variants (e.g. "Redhat", "@RedHatOfficial", "IBM Research - Tokyo")
+normalize_org() {
+  local o="${1,,}"
+  if [[ "$o" =~ red[[:space:]_-]?hat ]]; then echo "Red Hat"
+  elif [[ "$o" =~ (^|[^a-z0-9])ibm([^a-z0-9]|$) || "$o" == *"international business machines"* ]]; then echo "IBM"
+  else echo "$1"; fi
+}
+
 esc() { sed -e 's/|/\\|/g' <<<"$1"; }
 # Smaller font (GitHub strips style attributes, but allows <small>); empty stays empty
 sm() { [ -n "$1" ] && printf '<small>%s</small>' "$1" || true; }
 
 table=$(mktemp)
 rows=$(mktemp)
-# Rows are emitted as "<0|1><TAB><row>" (0 = adopter) so adopters can be sorted to the top
+# Rows are emitted as "<adopter 0|1><TAB><no-org 0|1><TAB><org><TAB><row>" so they can be
+# sorted: adopters first, then by org (people with no org last), original order within an org
 while read -r login; do
     [ -n "$login" ] || continue
     u="$DATA_DIR/users/$login.json"; s="$DATA_DIR/users/$login.social.json"
     name=$(jq -r '.name // ""' "$u")
-    org=$(jq -r '.company // ""' "$u")
+    org=$(normalize_org "$(jq -r '.company // ""' "$u")")
     email=$(jq -r '.email // ""' "$u")
     li=$(jq -r '[.[] | select(.provider=="linkedin") | .url][0] // ""' "$s")
     if [ -z "$li" ]; then
@@ -88,12 +98,14 @@ while read -r login; do
       contact="${contact:+$contact<br>}[linked-in]($li)"
     fi
     key=1; [ "$status" = "$ADOPTER_DOT" ] && key=0
-    printf '%s\t| $NUM | %s | %s | %s | %s | %s |\n' "$key" "$(sm "[$login](https://github.com/$login)")" "$(sm "$(esc "$name")")" "$(sm "$(esc "$org")")" "$(sm "$contact")" "$status"
+    noorg=0; [ -z "$org" ] && noorg=1
+    orgkey=$(tr -d '\t' <<<"${org,,}")
+    printf '%s\t%s\t%s\t| $NUM | %s | %s | %s | %s | %s |\n' "$key" "$noorg" "$orgkey" "$(sm "[$login](https://github.com/$login)")" "$(sm "$(esc "$name")")" "$(sm "$(esc "$org")")" "$(sm "$contact")" "$status"
 done < "$DATA_DIR/followers.txt" > "$rows"
 {
   echo "| num | id | name | org | contact | status |"
   echo "|----:|----|------|-----|---------|--------|"
-  sort -s -t $'\t' -k1,1n "$rows" | cut -f2- | awk '{n++; sub(/\$NUM/, n); print}'
+  sort -s -t $'\t' -k1,1n -k2,2n -k3,3 "$rows" | cut -f4- | awk '{n++; sub(/\$NUM/, n); print}'
 } > "$table"
 rm -f "$rows"
 
