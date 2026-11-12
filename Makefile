@@ -5,7 +5,7 @@
 #   make profiles           # fetch each follower's profile -> data/users/
 #   make readme             # regenerate the followers table in README.md
 #   make adopters           # download ADOPTERS.md -> data/ADOPTERS.md
-#   make clean              # remove ./data
+#   make clean              # remove ./data (except hand-maintained metadata.json)
 #
 # Optional: export GITHUB_TOKEN to raise the API rate limit (60/h -> 5000/h).
 # The token is read from the environment only and is never echoed.
@@ -63,5 +63,6 @@ adopters:
 readme: profiles adopters
 	DATA_DIR=$(DATA_DIR) scripts/gen_table.sh
 
+# Keep hand-maintained metadata.json
 clean:
-	rm -rf $(DATA_DIR)
+	@find $(DATA_DIR) -mindepth 1 -not -name metadata.json -delete 2>/dev/null || true

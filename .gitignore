@@ -219,5 +219,6 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Downloaded data
-data/
+# Downloaded data (metadata.json is hand-maintained and tracked)
+data/*
+!data/metadata.json

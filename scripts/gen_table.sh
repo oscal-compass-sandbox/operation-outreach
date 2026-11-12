@@ -22,41 +22,47 @@ if [ -f "$README" ]; then
   done < <(sed -n "/$BEGIN/,/$END/p" "$README" | grep -E '\[[^]]+\]\(https://github\.com/')
 fi
 
+METADATA="${METADATA:-$DATA_DIR/metadata.json}"   # hand-maintained overrides keyed by login
 ADOPTERS="${ADOPTERS:-$DATA_DIR/ADOPTERS.md}"
 ADOPTER_DOT='🟢'
 
 # Load adopters from "- [Name](url)" lines: names (plus parenthetical) and url hosts
-declare -a AD_NAMES=() AD_HOSTS=()
+declare -a AD_NAMES=() AD_LABELS=() AD_HOSTS=() AD_HOST_LABELS=()
 if [ -f "$ADOPTERS" ]; then
   while IFS= read -r l; do
     name=$(sed -E 's/^- \[([^]]+)\]\(.*/\1/' <<<"$l")
     url=$(sed -E 's/^- \[[^]]+\]\(([^)]*)\).*/\1/' <<<"$l")
     host=$(sed -E 's#^[a-z]+://##; s#/.*$##; s#^www\.##' <<<"$url")
-    AD_NAMES+=("$(sed -E 's/ *\(.*\)//' <<<"$name")")
+    label=$(sed -E 's/ *\(.*\)//' <<<"$name")
+    AD_NAMES+=("$label"); AD_LABELS+=("$label")
     paren=$(sed -nE 's/.*\(([^)]*)\).*/\1/p' <<<"$name")
-    [ -n "$paren" ] && AD_NAMES+=("$paren")
-    AD_HOSTS+=("$host")
+    [ -n "$paren" ] && { AD_NAMES+=("$paren"); AD_LABELS+=("$label"); }
+    AD_HOSTS+=("$host"); AD_HOST_LABELS+=("$label")
   done < <(grep -E '^- \[[^]]+\]\(' "$ADOPTERS")
 fi
 
-# is_adopter org login email blog -> 0 if any adopter name/domain matches
+# is_adopter org login email blog -> 0 if any adopter name/domain matches;
+# sets ADOPTER_MATCH to the matched adopter's name
 is_adopter() {
-  local hay words dom a ca
+  local hay words dom a ca i
+  ADOPTER_MATCH=""
   dom="${3#*@}"; [ "$3" = "$dom" ] && dom=""
   hay="$1 $2 $dom $4"
   words=" $(tr -c 'a-z0-9\n' ' ' <<<"${hay,,}" | tr -s ' ') "
   local compact="${hay,,}"; compact="${compact//[^a-z0-9]/}"
-  for a in "${AD_NAMES[@]}"; do
+  for i in "${!AD_NAMES[@]}"; do
+    a="${AD_NAMES[$i]}"
     ca="${a,,}"; ca="${ca//[^a-z0-9]/}"
     [ -n "$ca" ] || continue
     if [ "${#ca}" -le 4 ]; then
-      [[ "$words" == *" ${a,,} "* ]] && return 0   # short names: whole word only
+      [[ "$words" == *" ${a,,} "* ]] && { ADOPTER_MATCH="${AD_LABELS[$i]}"; return 0; }   # short names: whole word only
     else
-      [[ "$compact" == *"$ca"* ]] && return 0
+      [[ "$compact" == *"$ca"* ]] && { ADOPTER_MATCH="${AD_LABELS[$i]}"; return 0; }
     fi
   done
-  for a in "${AD_HOSTS[@]}"; do
-    [ -n "$dom" ] && { [ "${dom,,}" = "$a" ] || [[ "${dom,,}" == *".$a" ]]; } && return 0
+  for i in "${!AD_HOSTS[@]}"; do
+    a="${AD_HOSTS[$i]}"
+    [ -n "$dom" ] && { [ "${dom,,}" = "$a" ] || [[ "${dom,,}" == *".$a" ]]; } && { ADOPTER_MATCH="${AD_HOST_LABELS[$i]}"; return 0; }
   done
   return 1
 }
@@ -83,14 +89,28 @@ while read -r login; do
     name=$(jq -r '.name // ""' "$u")
     org=$(normalize_org "$(jq -r '.company // ""' "$u")")
     email=$(jq -r '.email // ""' "$u")
+    # Hand-maintained metadata (data/metadata.json) overrides GitHub values: name, org, email, linkedin
+    meta_li=""
+    if [ -f "$METADATA" ]; then
+      IFS=$'\t' read -r m_name m_org m_email meta_li < <(jq -r --arg l "$login" \
+        '(.[$l] // {}) | [.name // "", .org // "", .email // "", .linkedin // ""] | @tsv' "$METADATA")
+      [ -n "$m_name" ] && name="$m_name"
+      [ -n "$m_org" ] && org="$m_org"
+      [ -n "$m_email" ] && email="$m_email"
+    fi
     li=$(jq -r '[.[] | select(.provider=="linkedin") | .url][0] // ""' "$s")
     if [ -z "$li" ]; then
       li=$(jq -r 'if ((.blog // "") | test("linkedin\\.com"; "i")) then .blog else "" end' "$u")
     fi
+    [ -n "$meta_li" ] && li="$meta_li"
     blog=$(jq -r '.blog // ""' "$u")
     status="${STATUS[$login]:-}"
     [ "$status" = "$ADOPTER_DOT" ] && status=""   # dot is recomputed from ADOPTERS.md
-    is_adopter "$org" "$login" "$email" "$blog" && status="$ADOPTER_DOT"
+    if is_adopter "$org" "$login" "$email" "$blog"; then
+      status="$ADOPTER_DOT"
+      # No company on the profile: interpolate the org from the matched adopter
+      [ -z "$org" ] && org=$(normalize_org "$ADOPTER_MATCH")
+    fi
     contact=""
     # U+200B before "@" lets long e-mail addresses wrap, keeping the table narrow
     [ -n "$email" ] && contact="[${email/@/$'\u200b'@}](mailto:$email)"
