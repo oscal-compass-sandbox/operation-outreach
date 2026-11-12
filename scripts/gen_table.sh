@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Build the followers table in README.md (between marker comments) from data/users/*.
-# Existing "Status" values in the README are preserved; new rows default to "New".
+# Existing "Status" values in the README are preserved; new rows are blank.
 set -euo pipefail
 
 DATA_DIR="${DATA_DIR:-data}"
@@ -11,21 +11,24 @@ END='<!-- followers-table:end -->'
 # Preserve statuses already in README: login -> status
 declare -A STATUS
 if [ -f "$README" ]; then
-  while IFS='|' read -r _ id _ _ _ _ status _; do
-    login=$(sed -E 's/^ *\[([^]]+)\].*/\1/' <<<"$id")
-    st=$(sed -E 's/^ +| +$//g' <<<"$status")
-    [ -n "$login" ] && STATUS["$login"]="$st"
-  done < <(sed -n "/$BEGIN/,/$END/p" "$README" | grep -E '^\| *\[')
+  # Status is the last column; login is the first "[login](https://github.com/login)" link
+  while IFS= read -r line; do
+    login=$(sed -E 's/^[^[]*\[([^]]+)\]\(https:\/\/github\.com\/.*/\1/' <<<"$line")
+    st=$(sed -E 's/ *\| *$//; s/^.*\| *//' <<<"$line")
+    [ -n "$login" ] && [ -n "$st" ] && STATUS["$login"]="$st"
+  done < <(sed -n "/$BEGIN/,/$END/p" "$README" | grep -E '\[[^]]+\]\(https://github\.com/')
 fi
 
 esc() { sed -e 's/|/\\|/g' <<<"$1"; }
 
 table=$(mktemp)
 {
-  echo "| id | name | org | e-mail | linked-in | status |"
-  echo "|----|------|-----|--------|-----------|--------|"
+  echo "| num | id | name | org | contact | status |"
+  echo "|----:|----|------|-----|---------|--------|"
+  num=0
   while read -r login; do
     [ -n "$login" ] || continue
+    num=$((num + 1))
     u="$DATA_DIR/users/$login.json"; s="$DATA_DIR/users/$login.social.json"
     name=$(jq -r '.name // ""' "$u")
     org=$(jq -r '.company // ""' "$u")
@@ -34,9 +37,12 @@ table=$(mktemp)
     if [ -z "$li" ]; then
       li=$(jq -r 'if ((.blog // "") | test("linkedin\\.com"; "i")) then .blog else "" end' "$u")
     fi
-    [ -n "$li" ] && li="[profile]($li)"
-    [ -n "$email" ] && email="[$email](mailto:$email)"
-    echo "| [$login](https://github.com/$login) | $(esc "$name") | $(esc "$org") | $email | $li | ${STATUS[$login]:-New} |"
+    contact=""
+    [ -n "$email" ] && contact="[$email](mailto:$email)"
+    if [ -n "$li" ]; then
+      contact="${contact:+$contact<br>}[linked-in]($li)"
+    fi
+    echo "| $num | [$login](https://github.com/$login) | $(esc "$name") | $(esc "$org") | $contact | ${STATUS[$login]:-} |"
   done < "$DATA_DIR/followers.txt"
 } > "$table"
 
