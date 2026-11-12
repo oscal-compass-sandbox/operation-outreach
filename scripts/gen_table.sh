@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build the followers table in README.md (between marker comments) from data/users/*.
 # Existing "Status" values in the README are preserved; new rows are blank.
-# Adopters are listed first; within each group folks from the same org are together
+# Groups: adopters, then administrators, then the rest (blank status); within each group folks from the same org are together
 # (alphabetical by org, no-org last, original order kept within an org).
 # Dots are computed: green = adopter (data/ADOPTERS.md), purple = administrative (metadata.json "role").
 # Any other text in the status cell is preserved.
@@ -83,7 +83,7 @@ sm() { [ -n "$1" ] && printf '<small>%s</small>' "$1" || true; }
 
 table=$(mktemp)
 rows=$(mktemp)
-# Rows are emitted as "<adopter 0|1><TAB><no-org 0|1><TAB><org><TAB><row>" so they can be
+# Rows are emitted as "<group 0|1|2><TAB><no-org 0|1><TAB><org><TAB><row>" so they can be
 # sorted: adopters first, then by org (people with no org last), original order within an org
 while read -r login; do
     [ -n "$login" ] || continue
@@ -124,7 +124,7 @@ while read -r login; do
     if [ -n "$li" ]; then
       contact="${contact:+$contact<br>}[linked-in]($li)"
     fi
-    key=1; [[ "$status" == *"$ADOPTER_DOT"* ]] && key=0
+    key=2; [[ "$status" == *"$ADMIN_DOT"* ]] && key=1; [[ "$status" == *"$ADOPTER_DOT"* ]] && key=0
     noorg=0; [ -z "$org" ] && noorg=1
     orgkey=$(tr -d '\t' <<<"${org,,}")
     printf '%s\t%s\t%s\t| $NUM | %s | %s | %s | %s | %s |\n' "$key" "$noorg" "$orgkey" "$(sm "[$login](https://github.com/$login)")" "$(sm "$(esc "$name")")" "$(sm "$(esc "$org")")" "$(sm "$contact")" "$status"

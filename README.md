@@ -18,12 +18,12 @@
 | 7 | <small>[jpower432](https://github.com/jpower432)</small> | <small>Jennifer Power</small> | <small>Red Hat</small> | <small>[jpower​@redhat.com](mailto:jpower@redhat.com)</small> | 🟢 |
 | 8 | <small>[hbraswelrh](https://github.com/hbraswelrh)</small> | <small>Hannah Braswell</small> | <small>Red Hat</small> | <small>[linked-in](https://www.linkedin.com/in/hannah-braswell-414887221/)</small> | 🟢 |
 | 9 | <small>[sunstonesecure-robert](https://github.com/sunstonesecure-robert)</small> | <small>Robert Ficcaglia</small> | <small>Sunstone Secure, LLC</small> |  | 🟢 |
-| 10 | <small>[aavarca](https://github.com/aavarca)</small> | <small>Anthony Avarca</small> | <small>Argonne National Laboratory</small> | <small>[aavarca​@anl.gov](mailto:aavarca@anl.gov)</small> |  |
-| 11 | <small>[msantore](https://github.com/msantore)</small> | <small>MSantore</small> | <small>@blockskunk </small> |  |  |
-| 12 | <small>[richardlzluo](https://github.com/richardlzluo)</small> | <small>Richard Luo</small> | <small>Carleton University</small> | <small>[linked-in](https://www.linkedin.com/in/richard-luo-400743239/)</small> |  |
-| 13 | <small>[akramIOT](https://github.com/akramIOT)</small> | <small>Akram Sheriff  Public  Github Profile </small> | <small>CISCO SYSTEMS, CA</small> | <small>[sheriff.akram​@gmail.com](mailto:sheriff.akram@gmail.com)<br>[linked-in](https://www.linkedin.com/in/akram-sheriff-81749316/)</small> |  |
-| 14 | <small>[ptcrash](https://github.com/ptcrash)</small> | <small>Johnny Martin</small> | <small>@clearverified</small> |  |  |
-| 15 | <small>[krook](https://github.com/krook)</small> | <small>Daniel Krook</small> | <small>@cncf </small> | <small>[linked-in](https://www.linkedin.com/in/krook)</small> | 🟣 |
+| 10 | <small>[krook](https://github.com/krook)</small> | <small>Daniel Krook</small> | <small>@cncf </small> | <small>[linked-in](https://www.linkedin.com/in/krook)</small> | 🟣 |
+| 11 | <small>[aavarca](https://github.com/aavarca)</small> | <small>Anthony Avarca</small> | <small>Argonne National Laboratory</small> | <small>[aavarca​@anl.gov](mailto:aavarca@anl.gov)</small> |  |
+| 12 | <small>[msantore](https://github.com/msantore)</small> | <small>MSantore</small> | <small>@blockskunk </small> |  |  |
+| 13 | <small>[richardlzluo](https://github.com/richardlzluo)</small> | <small>Richard Luo</small> | <small>Carleton University</small> | <small>[linked-in](https://www.linkedin.com/in/richard-luo-400743239/)</small> |  |
+| 14 | <small>[akramIOT](https://github.com/akramIOT)</small> | <small>Akram Sheriff  Public  Github Profile </small> | <small>CISCO SYSTEMS, CA</small> | <small>[sheriff.akram​@gmail.com](mailto:sheriff.akram@gmail.com)<br>[linked-in](https://www.linkedin.com/in/akram-sheriff-81749316/)</small> |  |
+| 15 | <small>[ptcrash](https://github.com/ptcrash)</small> | <small>Johnny Martin</small> | <small>@clearverified</small> |  |  |
 | 16 | <small>[RS-Credentive](https://github.com/RS-Credentive)</small> | <small>Robert Sherwood</small> | <small>@credentive-sec</small> |  |  |
 | 17 | <small>[mlammerse](https://github.com/mlammerse)</small> | <small>Marcel Lammerse</small> | <small>Cyber Sense</small> | <small>[linked-in](https://www.linkedin.com/in/mlammerse/)</small> |  |
 | 18 | <small>[NationalDigitalTwin](https://github.com/NationalDigitalTwin)</small> | <small>National Digital Twin</small> | <small>Department for Business and Trade</small> |  |  |
