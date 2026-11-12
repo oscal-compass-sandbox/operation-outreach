@@ -4,6 +4,7 @@
 #   make followers          # download followers -> data/followers.json (+ followers.txt)
 #   make profiles           # fetch each follower's profile -> data/users/
 #   make readme             # regenerate the followers table in README.md
+#   make adopters           # download ADOPTERS.md -> data/ADOPTERS.md
 #   make clean              # remove ./data
 #
 # Optional: export GITHUB_TOKEN to raise the API rate limit (60/h -> 5000/h).
@@ -16,7 +17,7 @@ PER_PAGE   := 100
 FOLLOWERS_JSON := $(DATA_DIR)/followers.json
 FOLLOWERS_TXT  := $(DATA_DIR)/followers.txt
 
-.PHONY: followers profiles readme clean
+.PHONY: followers profiles adopters readme clean
 .DELETE_ON_ERROR:
 
 followers: $(FOLLOWERS_TXT)
@@ -53,7 +54,13 @@ $(FOLLOWERS_JSON):
 profiles: followers
 	DATA_DIR=$(DATA_DIR) scripts/fetch_profiles.sh
 
-readme: profiles
+ADOPTERS_URL := https://raw.githubusercontent.com/oscal-compass/community/main/ADOPTERS.md
+
+adopters:
+	@mkdir -p $(DATA_DIR)
+	curl -sS --fail --proto '=https' --tlsv1.2 --max-time 30 $(ADOPTERS_URL) -o $(DATA_DIR)/ADOPTERS.md
+
+readme: profiles adopters
 	DATA_DIR=$(DATA_DIR) scripts/gen_table.sh
 
 clean:
