@@ -3,7 +3,8 @@
 # Existing "Status" values in the README are preserved; new rows are blank.
 # Adopters are listed first; within each group folks from the same org are together
 # (alphabetical by org, no-org last, original order kept within an org).
-# A green dot (adopter) is computed from data/ADOPTERS.md and overrides a stored value.
+# Dots are computed: green = adopter (data/ADOPTERS.md), purple = administrative (metadata.json "role").
+# Any other text in the status cell is preserved.
 set -euo pipefail
 
 DATA_DIR="${DATA_DIR:-data}"
@@ -25,6 +26,7 @@ fi
 METADATA="${METADATA:-$DATA_DIR/metadata.json}"   # hand-maintained overrides keyed by login
 ADOPTERS="${ADOPTERS:-$DATA_DIR/ADOPTERS.md}"
 ADOPTER_DOT='🟢'
+ADMIN_DOT='🟣'
 
 # Load adopters from "- [Name](url)" lines: names (plus parenthetical) and url hosts
 declare -a AD_NAMES=() AD_LABELS=() AD_HOSTS=() AD_HOST_LABELS=()
@@ -90,10 +92,11 @@ while read -r login; do
     org=$(normalize_org "$(jq -r '.company // ""' "$u")")
     email=$(jq -r '.email // ""' "$u")
     # Hand-maintained metadata (data/metadata.json) overrides GitHub values: name, org, email, linkedin
-    meta_li=""
+    meta_li=""; m_role=""
     if [ -f "$METADATA" ]; then
-      IFS=$'\t' read -r m_name m_org m_email meta_li < <(jq -r --arg l "$login" \
-        '(.[$l] // {}) | [.name // "", .org // "", .email // "", .linkedin // ""] | @tsv' "$METADATA")
+      # Unit separator (not whitespace) so empty fields are not collapsed by read
+      IFS=$'\x1f' read -r m_name m_org m_email meta_li m_role < <(jq -r --arg l "$login" \
+        '(.[$l] // {}) | [.name // "", .org // "", .email // "", .linkedin // "", .role // ""] | join("\u001f")' "$METADATA")
       [ -n "$m_name" ] && name="$m_name"
       [ -n "$m_org" ] && org="$m_org"
       [ -n "$m_email" ] && email="$m_email"
@@ -105,19 +108,23 @@ while read -r login; do
     [ -n "$meta_li" ] && li="$meta_li"
     blog=$(jq -r '.blog // ""' "$u")
     status="${STATUS[$login]:-}"
-    [ "$status" = "$ADOPTER_DOT" ] && status=""   # dot is recomputed from ADOPTERS.md
+    status="${status//$ADOPTER_DOT/}"; status="${status//$ADMIN_DOT/}"   # dots are recomputed
+    status="${status#"${status%%[![:space:]]*}"}"
+    dots=""
     if is_adopter "$org" "$login" "$email" "$blog"; then
-      status="$ADOPTER_DOT"
+      dots="$ADOPTER_DOT"
       # No company on the profile: interpolate the org from the matched adopter
       [ -z "$org" ] && org=$(normalize_org "$ADOPTER_MATCH")
     fi
+    [ "$m_role" = "administrative" ] && dots="$dots$ADMIN_DOT"   # order: adopter, then admin
+    status="$dots${status:+ $status}"
     contact=""
     # U+200B before "@" lets long e-mail addresses wrap, keeping the table narrow
     [ -n "$email" ] && contact="[${email/@/$'\u200b'@}](mailto:$email)"
     if [ -n "$li" ]; then
       contact="${contact:+$contact<br>}[linked-in]($li)"
     fi
-    key=1; [ "$status" = "$ADOPTER_DOT" ] && key=0
+    key=1; [[ "$status" == *"$ADOPTER_DOT"* ]] && key=0
     noorg=0; [ -z "$org" ] && noorg=1
     orgkey=$(tr -d '\t' <<<"${org,,}")
     printf '%s\t%s\t%s\t| $NUM | %s | %s | %s | %s | %s |\n' "$key" "$noorg" "$orgkey" "$(sm "[$login](https://github.com/$login)")" "$(sm "$(esc "$name")")" "$(sm "$(esc "$org")")" "$(sm "$contact")" "$status"

@@ -4,6 +4,7 @@
 | status | meaning |
 |:------:|---------|
 | 🟢 | adopter |
+| 🟣 | administrative |
 
 <!-- followers-table:begin -->
 | num | id | name | org | contact | status |
@@ -22,7 +23,7 @@
 | 12 | <small>[richardlzluo](https://github.com/richardlzluo)</small> | <small>Richard Luo</small> | <small>Carleton University</small> | <small>[linked-in](https://www.linkedin.com/in/richard-luo-400743239/)</small> |  |
 | 13 | <small>[akramIOT](https://github.com/akramIOT)</small> | <small>Akram Sheriff  Public  Github Profile </small> | <small>CISCO SYSTEMS, CA</small> | <small>[sheriff.akram​@gmail.com](mailto:sheriff.akram@gmail.com)<br>[linked-in](https://www.linkedin.com/in/akram-sheriff-81749316/)</small> |  |
 | 14 | <small>[ptcrash](https://github.com/ptcrash)</small> | <small>Johnny Martin</small> | <small>@clearverified</small> |  |  |
-| 15 | <small>[krook](https://github.com/krook)</small> | <small>Daniel Krook</small> | <small>@cncf </small> | <small>[linked-in](https://www.linkedin.com/in/krook)</small> |  |
+| 15 | <small>[krook](https://github.com/krook)</small> | <small>Daniel Krook</small> | <small>@cncf </small> | <small>[linked-in](https://www.linkedin.com/in/krook)</small> | 🟣 |
 | 16 | <small>[RS-Credentive](https://github.com/RS-Credentive)</small> | <small>Robert Sherwood</small> | <small>@credentive-sec</small> |  |  |
 | 17 | <small>[mlammerse](https://github.com/mlammerse)</small> | <small>Marcel Lammerse</small> | <small>Cyber Sense</small> | <small>[linked-in](https://www.linkedin.com/in/mlammerse/)</small> |  |
 | 18 | <small>[NationalDigitalTwin](https://github.com/NationalDigitalTwin)</small> | <small>National Digital Twin</small> | <small>Department for Business and Trade</small> |  |  |
