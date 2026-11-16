@@ -105,3 +105,26 @@
 | 83 | <small>[Exkanir](https://github.com/Exkanir)</small> |  |  |  | ⚫ |
 | 84 | <small>[808-sequencer-of-death](https://github.com/808-sequencer-of-death)</small> | <small>Jack from Sequencer Assurance</small> |  |  | ⚫ |
 <!-- followers-table:end -->
+
+## Outreach
+Call for adopters: [oscal-compass/community#191](https://github.com/oscal-compass/community/issues/191)
+
+### Email template
+**Subject:** OSCAL Compass adopters list: permission to list `<organization>`
+
+> Hi `<first name>`,
+>
+> OSCAL Compass is preparing to apply for graduation to CNCF Incubation level. CNCF [evaluates](https://github.com/cncf/toc/blob/main/process/README.md#adopter-interviews-are-conducted) a project's adopters to help decide the merits of awarding graduation, and everyone who uses or follows the project benefits when the project graduates.
+>
+> You follow the project on GitHub, so we're reaching out. We'd welcome `<organization>` on our public [ADOPTERS.md](https://github.com/oscal-compass/community/blob/main/ADOPTERS.md) list.
+>
+> Just reply with:
+>
+> - Your permission for us to list your organization publicly
+> - Your organization's URL
+>
+> Or comment on the call for adopters: https://github.com/oscal-compass/community/issues/191. No other details are needed.
+>
+> No reply is needed if this message isn't relevant. Thank you for your interest in OSCAL Compass.
+>
+> `<your name>` on behalf of the OSCAL Compass project
