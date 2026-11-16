@@ -19,7 +19,7 @@
 |----:|----|------|-----|---------|--------|
 | 1 | <small>[degenaro](https://github.com/degenaro)</small> | <small>Lou DeGenaro</small> | <small>IBM</small> | <small>[lou.degenaro​@gmail.com](mailto:lou.degenaro@gmail.com)</small> | 🟢 |
 | 2 | <small>[weihoran](https://github.com/weihoran)</small> | <small>horan</small> | <small>IBM</small> | <small>[442460904​@qq.com](mailto:442460904@qq.com)</small> | 🟢 |
-| 3 | <small>[yana1205](https://github.com/yana1205)</small> | <small>Takumi Yanagawa</small> | <small>IBM</small> |  | 🟢 |
+| 3 | <small>[yana1205](https://github.com/yana1205)</small> | <small>Takumi Yanagawa</small> | <small>IBM</small> | <small>[YANA​@jp.ibm.com](mailto:YANA@jp.ibm.com)</small> | 🟢 |
 | 4 | <small>[jflowers](https://github.com/jflowers)</small> | <small>Jay Flowers</small> | <small>Red Hat</small> | <small>[jflowers​@redhat.com](mailto:jflowers@redhat.com)</small> | 🟢 |
 | 5 | <small>[michaelepley](https://github.com/michaelepley)</small> | <small>Michael Epley</small> | <small>Red Hat</small> | <small>[michaelepley​@gmail.com](mailto:michaelepley@gmail.com)</small> | 🟢 |
 | 6 | <small>[huiwangredhat](https://github.com/huiwangredhat)</small> | <small>Sophia Wang</small> | <small>Red Hat</small> | <small>[huiwang​@redhat.com](mailto:huiwang@redhat.com)</small> | 🟢 |
