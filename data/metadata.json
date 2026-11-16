@@ -1,11 +1,13 @@
 {
   "sunstonesecure-robert": {
     "name": "Robert Ficcaglia",
-    "org": "Sunstone Secure, LLC"
+    "org": "Sunstone Secure, LLC",
+    "email": "rficcaglia@sunstonesecure.com"
   },
   "degenaro": {
     "name": "Lou DeGenaro",
-    "org": "IBM"
+    "org": "IBM",
+    "email": "lou.degenaro@gmail.com"
   },
   "krook": {
     "role": "administrative"

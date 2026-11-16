@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 # Build the followers table in README.md (between marker comments) from data/users/*.
 # Existing "Status" values in the README are preserved; new rows are blank.
-# Groups: adopters, then administrators, then the rest (blank status); within each group folks from the same org are together
+# Groups: adopters, then administrators, then the rest (blank status), then those with no contact info (red dot; adopters stay green);
+# within each group folks from the same org are together
 # (alphabetical by org, no-org last, original order kept within an org).
-# Dots are computed: green = adopter (data/ADOPTERS.md), purple = administrative (metadata.json "role").
+# Dots are computed: green = adopter (data/ADOPTERS.md), purple = administrative (metadata.json "role"),
+# red = no contact info (no e-mail, linked-in, x, mastodon or bluesky).
 # Any other text in the status cell is preserved.
 set -euo pipefail
 
@@ -11,6 +13,8 @@ DATA_DIR="${DATA_DIR:-data}"
 README="${README:-README.md}"
 BEGIN='<!-- followers-table:begin -->'
 END='<!-- followers-table:end -->'
+SBEGIN='<!-- status-table:begin -->'
+SEND='<!-- status-table:end -->'
 
 # Preserve statuses already in README: login -> status
 declare -A STATUS
@@ -27,6 +31,7 @@ METADATA="${METADATA:-$DATA_DIR/metadata.json}"   # hand-maintained overrides ke
 ADOPTERS="${ADOPTERS:-$DATA_DIR/ADOPTERS.md}"
 ADOPTER_DOT='🟢'
 ADMIN_DOT='🟣'
+NOCONTACT_DOT='🔴'
 
 # Load adopters from "- [Name](url)" lines: names (plus parenthetical) and url hosts
 declare -a AD_NAMES=() AD_LABELS=() AD_HOSTS=() AD_HOST_LABELS=()
@@ -83,6 +88,7 @@ sm() { [ -n "$1" ] && printf '<small>%s</small>' "$1" || true; }
 
 table=$(mktemp)
 rows=$(mktemp)
+stats=$(mktemp)   # one "<dot><TAB><org key>" line per dot per person, for the status table counts
 # Rows are emitted as "<group 0|1|2><TAB><no-org 0|1><TAB><org><TAB><row>" so they can be
 # sorted: adopters first, then by org (people with no org last), original order within an org
 while read -r login; do
@@ -108,7 +114,7 @@ while read -r login; do
     [ -n "$meta_li" ] && li="$meta_li"
     blog=$(jq -r '.blog // ""' "$u")
     status="${STATUS[$login]:-}"
-    status="${status//$ADOPTER_DOT/}"; status="${status//$ADMIN_DOT/}"   # dots are recomputed
+    status="${status//$ADOPTER_DOT/}"; status="${status//$ADMIN_DOT/}"; status="${status//$NOCONTACT_DOT/}"   # dots are recomputed
     status="${status#"${status%%[![:space:]]*}"}"
     dots=""
     if is_adopter "$org" "$login" "$email" "$blog"; then
@@ -118,15 +124,34 @@ while read -r login; do
     fi
     [ "$m_role" = "administrative" ] && dots="$dots$ADMIN_DOT"   # order: adopter, then admin
     status="$dots${status:+ $status}"
+    # Single contact method, in order of preference: e-mail, linked-in, x, mastodon, bluesky
     contact=""
-    # U+200B before "@" lets long e-mail addresses wrap, keeping the table narrow
-    [ -n "$email" ] && contact="[${email/@/$'\u200b'@}](mailto:$email)"
-    if [ -n "$li" ]; then
-      contact="${contact:+$contact<br>}[linked-in]($li)"
+    tw=$(jq -r '[.[] | select(.provider=="twitter") | .url][0] // ""' "$s")
+    if [ -z "$tw" ]; then
+      tw_user=$(jq -r '.twitter_username // ""' "$u")
+      [ -n "$tw_user" ] && tw="https://x.com/$tw_user"
+    fi
+    ma=$(jq -r '[.[] | select(.provider=="mastodon") | .url][0] // ""' "$s")
+    bs=$(jq -r '[.[] | select(.provider=="bluesky") | .url][0] // ""' "$s")
+    if [ -n "$email" ]; then
+      # U+200B before "@" lets long e-mail addresses wrap, keeping the table narrow
+      contact="[${email/@/$'\u200b'@}](mailto:$email)"
+    else
+      for pair in "linked-in|$li" "x|$tw" "mastodon|$ma" "bluesky|$bs"; do
+        [ -n "${pair#*|}" ] && { contact="[${pair%%|*}](${pair#*|})"; break; }
+      done
     fi
     key=2; [[ "$status" == *"$ADMIN_DOT"* ]] && key=1; [[ "$status" == *"$ADOPTER_DOT"* ]] && key=0
+    # No contact info: red dot (after the other dots), sorted after every other group; adopters (green) win
+    if [ -z "$contact" ] && [[ "$status" != *"$ADOPTER_DOT"* ]]; then
+      status="$dots$NOCONTACT_DOT${status#"$dots"}"
+      key=3
+    fi
     noorg=0; [ -z "$org" ] && noorg=1
     orgkey=$(tr -d '\t' <<<"${org,,}")
+    for d in "$ADOPTER_DOT" "$ADMIN_DOT" "$NOCONTACT_DOT"; do
+      [[ "$status" == *"$d"* ]] && printf '%s\t%s\n' "$d" "$orgkey" >> "$stats"
+    done
     printf '%s\t%s\t%s\t| $NUM | %s | %s | %s | %s | %s |\n' "$key" "$noorg" "$orgkey" "$(sm "[$login](https://github.com/$login)")" "$(sm "$(esc "$name")")" "$(sm "$(esc "$org")")" "$(sm "$contact")" "$status"
 done < "$DATA_DIR/followers.txt" > "$rows"
 {
@@ -136,14 +161,39 @@ done < "$DATA_DIR/followers.txt" > "$rows"
 } > "$table"
 rm -f "$rows"
 
-out=$(mktemp)
-if grep -qF "$BEGIN" "$README"; then
-  awk -v b="$BEGIN" -v e="$END" -v t="$table" '
+# Status table: for each dot, org count = unique orgs, person count = persons with no org
+count_org()    { awk -F'\t' -v d="$1" '$1==d && $2!="" && !seen[$2]++ {n++} END {print n+0}' "$stats"; }
+count_person() { awk -F'\t' -v d="$1" '$1==d && $2=="" {n++} END {print n+0}' "$stats"; }
+status_table=$(mktemp)
+{
+  echo "| status | meaning | org count<sup>1</sup> | person count<sup>2</sup> |"
+  echo "|:------:|---------|----------------------:|-------------------------:|"
+  for row in "$ADOPTER_DOT|adopter" "$ADMIN_DOT|administrative" "$NOCONTACT_DOT|no contact info"; do
+    echo "| ${row%%|*} | ${row#*|} | $(count_org "${row%%|*}") | $(count_person "${row%%|*}") |"
+  done
+  echo
+  echo "<sup>1</sup> org count: number of unique orgs among the people with that status."
+  echo
+  echo "<sup>2</sup> person count: number of people with that status who are not in an org (no org listed)."
+} > "$status_table"
+rm -f "$stats"
+
+# replace(file, begin-marker, end-marker, content-file): swap what is between the markers
+replace_block() {
+  local o; o=$(mktemp)
+  awk -v b="$2" -v e="$3" -v t="$4" '
     $0==b {print; while ((getline l < t) > 0) print l; skip=1; next}
     $0==e {skip=0}
-    !skip {print}' "$README" > "$out"
+    !skip {print}' "$1" > "$o"
+  mv "$o" "$1"
+}
+
+if grep -qF "$BEGIN" "$README"; then
+  replace_block "$README" "$BEGIN" "$END" "$table"
 else
-  { cat "$README"; printf '\n## Followers\n\n%s\n' "$BEGIN"; cat "$table"; printf '%s\n' "$END"; } > "$out"
+  { cat "$README"; printf '\n## Followers\n\n%s\n' "$BEGIN"; cat "$table"; printf '%s\n' "$END"; } > "$README.new"
+  mv "$README.new" "$README"
 fi
-mv "$out" "$README"; rm -f "$table"
+grep -qF "$SBEGIN" "$README" && replace_block "$README" "$SBEGIN" "$SEND" "$status_table"
+rm -f "$table" "$status_table"
 echo "Updated $README"
