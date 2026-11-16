@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build the followers table in README.md (between marker comments) from data/users/*.
 # Existing "Status" values in the README are preserved; new rows are blank.
-# Groups: adopters, then administrators, then the rest (blank status), then those with no contact info (red dot; adopters stay green);
+# Groups: administrators, then adopters, then contact pending (yellow), then those with no contact info (red dot; adopters stay green);
 # within each group folks from the same org are together
 # (alphabetical by org, no-org last, original order kept within an org).
 # Dots are computed: green = adopter (data/ADOPTERS.md), purple = administrative (metadata.json "role"),
@@ -92,7 +92,7 @@ table=$(mktemp)
 rows=$(mktemp)
 stats=$(mktemp)   # one "<dot><TAB><org key>" line per dot per person, for the status table counts
 # Rows are emitted as "<group 0|1|2><TAB><no-org 0|1><TAB><org><TAB><row>" so they can be
-# sorted: adopters first, then by org (people with no org last), original order within an org
+# sorted: administrators first, then adopters, then by org (people with no org last), original order within an org
 while read -r login; do
     [ -n "$login" ] || continue
     u="$DATA_DIR/users/$login.json"; s="$DATA_DIR/users/$login.social.json"
@@ -143,7 +143,7 @@ while read -r login; do
         [ -n "${pair#*|}" ] && { contact="[${pair%%|*}](${pair#*|})"; break; }
       done
     fi
-    key=2; [[ "$status" == *"$ADMIN_DOT"* ]] && key=1; [[ "$status" == *"$ADOPTER_DOT"* ]] && key=0
+    key=2; [[ "$status" == *"$ADOPTER_DOT"* ]] && key=1; [[ "$status" == *"$ADMIN_DOT"* ]] && key=0
     # No contact info: red dot (after the other dots), sorted after every other group; adopters (green) win
     if [ -z "$contact" ] && [[ "$status" != *"$ADOPTER_DOT"* ]]; then
       status="$dots$NOCONTACT_DOT${status#"$dots"}"
@@ -153,7 +153,7 @@ while read -r login; do
     [ -n "$contact" ] && [ -z "${status//[[:space:]]/}" ] && status="$PENDING_DOT"
     noorg=0; [ -z "$org" ] && noorg=1
     orgkey=$(tr -d '\t' <<<"${org,,}")
-    for d in "$ADOPTER_DOT" "$PENDING_DOT" "$NOCONTACT_DOT" "$ADMIN_DOT"; do
+    for d in "$ADMIN_DOT" "$ADOPTER_DOT" "$PENDING_DOT" "$NOCONTACT_DOT"; do
       [[ "$status" == *"$d"* ]] && printf '%s\t%s\n' "$d" "$orgkey" >> "$stats"
     done
     printf '%s\t%s\t%s\t| $NUM | %s | %s | %s | %s | %s |\n' "$key" "$noorg" "$orgkey" "$(sm "[$login](https://github.com/$login)")" "$(sm "$(esc "$name")")" "$(sm "$(esc "$org")")" "$(sm "$contact")" "$status"
@@ -172,7 +172,7 @@ status_table=$(mktemp)
 {
   echo "| status | meaning | org count<sup>1</sup> | person count<sup>2</sup> |"
   echo "|:------:|---------|----------------------:|-------------------------:|"
-  for row in "$ADOPTER_DOT|adopter" "$PENDING_DOT|contact pending" "$NOCONTACT_DOT|no contact info" "$ADMIN_DOT|administrative"; do
+  for row in "$ADMIN_DOT|administrative" "$ADOPTER_DOT|adopter" "$PENDING_DOT|contact pending" "$NOCONTACT_DOT|no contact info"; do
     echo "| ${row%%|*} | ${row#*|} | $(count_org "${row%%|*}") | $(count_person "${row%%|*}") |"
   done
   echo

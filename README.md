@@ -4,10 +4,10 @@
 <!-- status-table:begin -->
 | status | meaning | org count<sup>1</sup> | person count<sup>2</sup> |
 |:------:|---------|----------------------:|-------------------------:|
+| 🟣 | administrative | 1 | 0 |
 | 🟢 | adopter | 3 | 0 |
 | 🟡 | contact pending | 15 | 22 |
 | 🔴 | no contact info | 6 | 31 |
-| 🟣 | administrative | 1 | 0 |
 
 <sup>1</sup> org count: number of unique orgs among the people with that status.
 
@@ -17,16 +17,16 @@
 <!-- followers-table:begin -->
 | num | id | name | org | contact | status |
 |----:|----|------|-----|---------|--------|
-| 1 | <small>[degenaro](https://github.com/degenaro)</small> | <small>Lou DeGenaro</small> | <small>IBM</small> | <small>[lou.degenaro​@gmail.com](mailto:lou.degenaro@gmail.com)</small> | 🟢 |
-| 2 | <small>[weihoran](https://github.com/weihoran)</small> | <small>horan</small> | <small>IBM</small> | <small>[442460904​@qq.com](mailto:442460904@qq.com)</small> | 🟢 |
-| 3 | <small>[yana1205](https://github.com/yana1205)</small> | <small>Takumi Yanagawa</small> | <small>IBM</small> | <small>[YANA​@jp.ibm.com](mailto:YANA@jp.ibm.com)</small> | 🟢 |
-| 4 | <small>[jflowers](https://github.com/jflowers)</small> | <small>Jay Flowers</small> | <small>Red Hat</small> | <small>[jflowers​@redhat.com](mailto:jflowers@redhat.com)</small> | 🟢 |
-| 5 | <small>[michaelepley](https://github.com/michaelepley)</small> | <small>Michael Epley</small> | <small>Red Hat</small> | <small>[michaelepley​@gmail.com](mailto:michaelepley@gmail.com)</small> | 🟢 |
-| 6 | <small>[huiwangredhat](https://github.com/huiwangredhat)</small> | <small>Sophia Wang</small> | <small>Red Hat</small> | <small>[huiwang​@redhat.com](mailto:huiwang@redhat.com)</small> | 🟢 |
-| 7 | <small>[jpower432](https://github.com/jpower432)</small> | <small>Jennifer Power</small> | <small>Red Hat</small> | <small>[jpower​@redhat.com](mailto:jpower@redhat.com)</small> | 🟢 |
-| 8 | <small>[hbraswelrh](https://github.com/hbraswelrh)</small> | <small>Hannah Braswell</small> | <small>Red Hat</small> | <small>[linked-in](https://www.linkedin.com/in/hannah-braswell-414887221/)</small> | 🟢 |
-| 9 | <small>[sunstonesecure-robert](https://github.com/sunstonesecure-robert)</small> | <small>Robert Ficcaglia</small> | <small>Sunstone Secure, LLC</small> | <small>[rficcaglia​@sunstonesecure.com](mailto:rficcaglia@sunstonesecure.com)</small> | 🟢 |
-| 10 | <small>[krook](https://github.com/krook)</small> | <small>Daniel Krook</small> | <small>@cncf </small> | <small>[linked-in](https://www.linkedin.com/in/krook)</small> | 🟣 |
+| 1 | <small>[krook](https://github.com/krook)</small> | <small>Daniel Krook</small> | <small>@cncf </small> | <small>[linked-in](https://www.linkedin.com/in/krook)</small> | 🟣 |
+| 2 | <small>[degenaro](https://github.com/degenaro)</small> | <small>Lou DeGenaro</small> | <small>IBM</small> | <small>[lou.degenaro​@gmail.com](mailto:lou.degenaro@gmail.com)</small> | 🟢 |
+| 3 | <small>[weihoran](https://github.com/weihoran)</small> | <small>horan</small> | <small>IBM</small> | <small>[442460904​@qq.com](mailto:442460904@qq.com)</small> | 🟢 |
+| 4 | <small>[yana1205](https://github.com/yana1205)</small> | <small>Takumi Yanagawa</small> | <small>IBM</small> | <small>[YANA​@jp.ibm.com](mailto:YANA@jp.ibm.com)</small> | 🟢 |
+| 5 | <small>[jflowers](https://github.com/jflowers)</small> | <small>Jay Flowers</small> | <small>Red Hat</small> | <small>[jflowers​@redhat.com](mailto:jflowers@redhat.com)</small> | 🟢 |
+| 6 | <small>[michaelepley](https://github.com/michaelepley)</small> | <small>Michael Epley</small> | <small>Red Hat</small> | <small>[michaelepley​@gmail.com](mailto:michaelepley@gmail.com)</small> | 🟢 |
+| 7 | <small>[huiwangredhat](https://github.com/huiwangredhat)</small> | <small>Sophia Wang</small> | <small>Red Hat</small> | <small>[huiwang​@redhat.com](mailto:huiwang@redhat.com)</small> | 🟢 |
+| 8 | <small>[jpower432](https://github.com/jpower432)</small> | <small>Jennifer Power</small> | <small>Red Hat</small> | <small>[jpower​@redhat.com](mailto:jpower@redhat.com)</small> | 🟢 |
+| 9 | <small>[hbraswelrh](https://github.com/hbraswelrh)</small> | <small>Hannah Braswell</small> | <small>Red Hat</small> | <small>[linked-in](https://www.linkedin.com/in/hannah-braswell-414887221/)</small> | 🟢 |
+| 10 | <small>[sunstonesecure-robert](https://github.com/sunstonesecure-robert)</small> | <small>Robert Ficcaglia</small> | <small>Sunstone Secure, LLC</small> | <small>[rficcaglia​@sunstonesecure.com](mailto:rficcaglia@sunstonesecure.com)</small> | 🟢 |
 | 11 | <small>[aavarca](https://github.com/aavarca)</small> | <small>Anthony Avarca</small> | <small>Argonne National Laboratory</small> | <small>[aavarca​@anl.gov](mailto:aavarca@anl.gov)</small> | 🟡 |
 | 12 | <small>[msantore](https://github.com/msantore)</small> | <small>MSantore</small> | <small>@blockskunk </small> | <small>[x](https://twitter.com/santoretech)</small> | 🟡 |
 | 13 | <small>[richardlzluo](https://github.com/richardlzluo)</small> | <small>Richard Luo</small> | <small>Carleton University</small> | <small>[linked-in](https://www.linkedin.com/in/richard-luo-400743239/)</small> | 🟡 |
