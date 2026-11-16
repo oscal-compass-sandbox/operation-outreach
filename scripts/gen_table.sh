@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # Build the followers table in README.md (between marker comments) from data/users/*.
 # Existing "Status" values in the README are preserved; new rows are blank.
-# Groups: administrators, then adopters, then contact pending (yellow), then those with no contact info (red dot; adopters stay green);
+# Groups: administrators, then adopters, then contact pending (yellow), then no contact info (red dot; adopters stay green), then individuals (black dot, not eligible);
 # within each group folks from the same org are together
 # (alphabetical by org, no-org last, original order kept within an org).
 # Dots are computed: green = adopter (data/ADOPTERS.md), purple = administrative (metadata.json "role"),
 # red = no contact info (no e-mail, linked-in, x, mastodon or bluesky),
-# yellow = contact pending (has contact info but no other status).
+# yellow = contact pending (has contact info but no other status),
+# black = individual, not eligible (no org; CNCF adopters are organizations; green/purple win).
 # Any other text in the status cell is preserved.
 set -euo pipefail
 
@@ -34,6 +35,8 @@ ADOPTER_DOT='🟢'
 ADMIN_DOT='🟣'
 NOCONTACT_DOT='🔴'
 PENDING_DOT='🟡'
+INDIVIDUAL_DOT='⚫'
+ADOPTER_DEF='https://github.com/cncf/toc/blob/main/FAQ.md#what-is-the-definition-of-an-adopter'
 
 # Load adopters from "- [Name](url)" lines: names (plus parenthetical) and url hosts
 declare -a AD_NAMES=() AD_LABELS=() AD_HOSTS=() AD_HOST_LABELS=()
@@ -116,7 +119,7 @@ while read -r login; do
     [ -n "$meta_li" ] && li="$meta_li"
     blog=$(jq -r '.blog // ""' "$u")
     status="${STATUS[$login]:-}"
-    status="${status//$ADOPTER_DOT/}"; status="${status//$ADMIN_DOT/}"; status="${status//$NOCONTACT_DOT/}"; status="${status//$PENDING_DOT/}"   # dots are recomputed
+    status="${status//$ADOPTER_DOT/}"; status="${status//$ADMIN_DOT/}"; status="${status//$NOCONTACT_DOT/}"; status="${status//$PENDING_DOT/}"; status="${status//$INDIVIDUAL_DOT/}"   # dots are recomputed
     status="${status#"${status%%[![:space:]]*}"}"
     dots=""
     if is_adopter "$org" "$login" "$email" "$blog"; then
@@ -144,8 +147,12 @@ while read -r login; do
       done
     fi
     key=2; [[ "$status" == *"$ADOPTER_DOT"* ]] && key=1; [[ "$status" == *"$ADMIN_DOT"* ]] && key=0
+    # Individual (no org), not eligible: black dot, sorted last; adopters (green) and administrators (purple) win
+    if [ -z "$org" ] && [ -z "$dots" ]; then
+      status="$INDIVIDUAL_DOT${status#"$dots"}"
+      key=4
     # No contact info: red dot (after the other dots), sorted after every other group; adopters (green) win
-    if [ -z "$contact" ] && [[ "$status" != *"$ADOPTER_DOT"* ]]; then
+    elif [ -z "$contact" ] && [[ "$status" != *"$ADOPTER_DOT"* ]]; then
       status="$dots$NOCONTACT_DOT${status#"$dots"}"
       key=3
     fi
@@ -153,7 +160,7 @@ while read -r login; do
     [ -n "$contact" ] && [ -z "${status//[[:space:]]/}" ] && status="$PENDING_DOT"
     noorg=0; [ -z "$org" ] && noorg=1
     orgkey=$(tr -d '\t' <<<"${org,,}")
-    for d in "$ADMIN_DOT" "$ADOPTER_DOT" "$PENDING_DOT" "$NOCONTACT_DOT"; do
+    for d in "$ADMIN_DOT" "$ADOPTER_DOT" "$PENDING_DOT" "$NOCONTACT_DOT" "$INDIVIDUAL_DOT"; do
       [[ "$status" == *"$d"* ]] && printf '%s\t%s\n' "$d" "$orgkey" >> "$stats"
     done
     printf '%s\t%s\t%s\t| $NUM | %s | %s | %s | %s | %s |\n' "$key" "$noorg" "$orgkey" "$(sm "[$login](https://github.com/$login)")" "$(sm "$(esc "$name")")" "$(sm "$(esc "$org")")" "$(sm "$contact")" "$status"
@@ -172,13 +179,15 @@ status_table=$(mktemp)
 {
   echo "| status | meaning | org count<sup>1</sup> | person count<sup>2</sup> |"
   echo "|:------:|---------|----------------------:|-------------------------:|"
-  for row in "$ADMIN_DOT|administrative" "$ADOPTER_DOT|adopter" "$PENDING_DOT|contact pending" "$NOCONTACT_DOT|no contact info"; do
+  for row in "$ADMIN_DOT|administrative" "$ADOPTER_DOT|adopter" "$PENDING_DOT|contact pending" "$NOCONTACT_DOT|no contact info" "$INDIVIDUAL_DOT|individual, not eligible<sup>3</sup>"; do
     echo "| ${row%%|*} | ${row#*|} | $(count_org "${row%%|*}") | $(count_person "${row%%|*}") |"
   done
   echo
   echo "<sup>1</sup> org count: number of unique orgs among the people with that status."
   echo
   echo "<sup>2</sup> person count: number of people with that status who are not in an org (no org listed)."
+  echo
+  echo "<sup>3</sup> individual, not eligible: a person with no org listed. The CNCF TOC FAQ [defines an adopter]($ADOPTER_DEF) as an organization (\"any organization that currently and actively, successfully leverages that project...\"), so an individual is not eligible to be listed in ADOPTERS.md."
 } > "$status_table"
 rm -f "$stats"
 
