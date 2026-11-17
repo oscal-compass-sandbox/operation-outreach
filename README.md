@@ -7,7 +7,7 @@
 | 🟣 | administrative | 1 | 0 |
 | 🟢 | adopter | 3 | 0 |
 | 🟡 | contact pending | 15 | 0 |
-| 🔵 | need org | 0 | 22 |
+| 🔵 | contact pending, need org | 0 | 22 |
 | 🔴 | no contact info | 6 | 0 |
 | ⚫ | individual, not eligible<sup>3</sup> | 0 | 31 |
 
