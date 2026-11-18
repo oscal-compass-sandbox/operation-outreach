@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Build the followers table in README.md (between marker comments) from data/users/*.
-# Existing "Status" values in the README are preserved; new rows are blank.
+# Existing "Status" and "date" values in the README are preserved; new rows are blank.
 # Groups: administrators, then adopters, then contact pending (yellow), then need org (blue), then no contact info (red dot; adopters stay green), then individuals (black dot, not eligible);
 # within each group folks from the same org are together
 # (alphabetical by org, no-org last, original order kept within an org).
@@ -19,14 +19,18 @@ END='<!-- followers-table:end -->'
 SBEGIN='<!-- status-table:begin -->'
 SEND='<!-- status-table:end -->'
 
-# Preserve statuses already in README: login -> status
-declare -A STATUS
+# Preserve statuses and dates already in README: login -> status, login -> date
+declare -A STATUS DATE
 if [ -f "$README" ]; then
-  # Status is the last column; login is the first "[login](https://github.com/login)" link
+  # Status is column 6 and date column 7 (awk fields $7/$8 after the leading "|"; date is absent in older READMEs);
+  # login is the first "[login](https://github.com/login)" link
   while IFS= read -r line; do
     login=$(sed -E 's/^[^[]*\[([^]]+)\]\(https:\/\/github\.com\/.*/\1/' <<<"$line")
-    st=$(sed -E 's/ *\| *$//; s/^.*\| *//' <<<"$line")
+    st=$(awk -F'|' '{gsub(/^ +| +$/,"",$7); print $7}' <<<"$line")
+    dt=$(awk -F'|' '{gsub(/^ +| +$/,"",$8); print $8}' <<<"$line")
+    dt="${dt//<small>/}"; dt="${dt//<\/small>/}"
     [ -n "$login" ] && [ -n "$st" ] && STATUS["$login"]="$st"
+    [ -n "$login" ] && [ -n "$dt" ] && DATE["$login"]="$dt"
   done < <(sed -n "/$BEGIN/,/$END/p" "$README" | grep -E '\[[^]]+\]\(https://github\.com/')
 fi
 
@@ -171,11 +175,11 @@ while read -r login; do
     for d in "$ADMIN_DOT" "$ADOPTER_DOT" "$PENDING_DOT" "$NEEDORG_DOT" "$NOCONTACT_DOT" "$INDIVIDUAL_DOT"; do
       [[ "$status" == *"$d"* ]] && printf '%s\t%s\n' "$d" "$orgkey" >> "$stats"
     done
-    printf '%s\t%s\t%s\t| $NUM | %s | %s | %s | %s | %s |\n' "$key" "$noorg" "$orgkey" "$(sm "[$login](https://github.com/$login)")" "$(sm "$(esc "$name")")" "$(sm "$(esc "$org")")" "$(sm "$contact")" "$status"
+    printf '%s\t%s\t%s\t| $NUM | %s | %s | %s | %s | %s | %s |\n' "$key" "$noorg" "$orgkey" "$(sm "[$login](https://github.com/$login)")" "$(sm "$(esc "$name")")" "$(sm "$(esc "$org")")" "$(sm "$contact")" "$status" "$(sm "${DATE[$login]:-}")"
 done < "$DATA_DIR/followers.txt" > "$rows"
 {
-  echo "| num | id | name | org | contact | status |"
-  echo "|----:|----|------|-----|---------|--------|"
+  echo "| num | id | name | org | contact | status | date |"
+  echo "|----:|----|------|-----|---------|--------|------|"
   sort -s -t $'\t' -k1,1n -k2,2n -k3,3 "$rows" | cut -f4- | awk '{n++; sub(/\$NUM/, n); print}'
 } > "$table"
 rm -f "$rows"
