@@ -69,11 +69,11 @@
 | 45 | <small>[itsgnani](https://github.com/itsgnani)</small> | <small>Gnanendra Avvaru</small> |  | <small>[gnani​@wald.ai](mailto:gnani@wald.ai)</small> | 🔵 |  |  |
 | 46 | <small>[ptcrash](https://github.com/ptcrash)</small> | <small>Johnny Martin</small> | <small>@clearverified</small> |  | 🔴 |  |  |
 | 47 | <small>[RS-Credentive](https://github.com/RS-Credentive)</small> | <small>Robert Sherwood</small> | <small>@credentive-sec</small> |  | 🔴 |  |  |
-| 48 | <small>[mlammerse](https://github.com/mlammerse)</small> | <small>Marcel Lammerse</small> | <small>Cyber Sense</small> | <small>[linked-in](https://www.linkedin.com/in/mlammerse/)</small> | 🟤 |  | <small>linked-in 404</small> |
-| 49 | <small>[NationalDigitalTwin](https://github.com/NationalDigitalTwin)</small> | <small>National Digital Twin</small> | <small>Department for Business and Trade</small> |  | 🔴 |  |  |
-| 50 | <small>[tom-sandler](https://github.com/tom-sandler)</small> | <small>Tom Sandler</small> | <small>@finnyai </small> |  | 🔴 |  |  |
-| 51 | <small>[rsellers001](https://github.com/rsellers001)</small> | <small>Robert Sellers</small> | <small>KAIM Inc.</small> |  | 🔴 |  |  |
-| 52 | <small>[saintskeeper](https://github.com/saintskeeper)</small> | <small>Walt-</small> | <small>@The-Mines </small> |  | 🔴 |  |  |
+| 48 | <small>[NationalDigitalTwin](https://github.com/NationalDigitalTwin)</small> | <small>National Digital Twin</small> | <small>Department for Business and Trade</small> |  | 🔴 |  |  |
+| 49 | <small>[tom-sandler](https://github.com/tom-sandler)</small> | <small>Tom Sandler</small> | <small>@finnyai </small> |  | 🔴 |  |  |
+| 50 | <small>[rsellers001](https://github.com/rsellers001)</small> | <small>Robert Sellers</small> | <small>KAIM Inc.</small> |  | 🔴 |  |  |
+| 51 | <small>[saintskeeper](https://github.com/saintskeeper)</small> | <small>Walt-</small> | <small>@The-Mines </small> |  | 🔴 |  |  |
+| 52 | <small>[mlammerse](https://github.com/mlammerse)</small> | <small>Marcel Lammerse</small> | <small>Cyber Sense</small> | <small>[linked-in](https://www.linkedin.com/in/mlammerse/)</small> | 🟤 |  | <small>linked-in 404</small> |
 | 53 | <small>[mvankradenburgh](https://github.com/mvankradenburgh)</small> | <small>Mike Van Kradenburgh</small> |  |  | ⚫ |  |  |
 | 54 | <small>[gpeavy](https://github.com/gpeavy)</small> |  |  |  | ⚫ |  |  |
 | 55 | <small>[jonathanhle](https://github.com/jonathanhle)</small> | <small>Jonathan Le</small> |  |  | ⚫ |  |  |
