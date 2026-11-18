@@ -32,7 +32,7 @@
 | 9 | <small>[hbraswelrh](https://github.com/hbraswelrh)</small> | <small>Hannah Braswell</small> | <small>Red Hat</small> | <small>[linked-in](https://www.linkedin.com/in/hannah-braswell-414887221/)</small> | 🟢 |  |
 | 10 | <small>[sunstonesecure-robert](https://github.com/sunstonesecure-robert)</small> | <small>Robert Ficcaglia</small> | <small>Sunstone Secure, LLC</small> | <small>[rficcaglia​@sunstonesecure.com](mailto:rficcaglia@sunstonesecure.com)</small> | 🟢 |  |
 | 11 | <small>[aavarca](https://github.com/aavarca)</small> | <small>Anthony Avarca</small> | <small>Argonne National Laboratory</small> | <small>[aavarca​@anl.gov](mailto:aavarca@anl.gov)</small> | 🟡 | <small>2026-11-18</small> |
-| 12 | <small>[msantore](https://github.com/msantore)</small> | <small>MSantore</small> | <small>@blockskunk </small> | <small>[x](https://twitter.com/santoretech)</small> | 🟡 |  |
+| 12 | <small>[msantore](https://github.com/msantore)</small> | <small>MSantore</small> | <small>@blockskunk </small> | <small>[x](https://twitter.com/santoretech)</small> | 🟡 | <small>2026-11-18</small> |
 | 13 | <small>[richardlzluo](https://github.com/richardlzluo)</small> | <small>Richard Luo</small> | <small>Carleton University</small> | <small>[linked-in](https://www.linkedin.com/in/richard-luo-400743239/)</small> | 🟡 |  |
 | 14 | <small>[akramIOT](https://github.com/akramIOT)</small> | <small>Akram Sheriff</small> | <small>CISCO SYSTEMS, CA</small> | <small>[sheriff.akram​@gmail.com](mailto:sheriff.akram@gmail.com)</small> | 🟡 | <small>2026-11-18</small> |
 | 15 | <small>[mlammerse](https://github.com/mlammerse)</small> | <small>Marcel Lammerse</small> | <small>Cyber Sense</small> | <small>[linked-in](https://www.linkedin.com/in/mlammerse/)</small> | 🟡 |  |
@@ -128,3 +128,8 @@ Call for adopters: [oscal-compass/community#191](https://github.com/oscal-compas
 > Questions or comments are welcome on the adoption open issue: https://github.com/oscal-compass/community/issues/191
 >
 > `<your name>` on behalf of the OSCAL Compass project
+
+### X post template
+For followers whose only contact is X. Direct messages need a verified account, so use a public post or reply (280 characters max; a link counts as about 23).
+
+> @`<x handle>` Thanks for following OSCAL Compass! We're applying for CNCF Incubation and collecting adopter endorsements. Would you be open to it? Details: https://github.com/oscal-compass/community/issues/191
