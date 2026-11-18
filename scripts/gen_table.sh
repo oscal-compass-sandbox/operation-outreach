@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Build the followers table in README.md (between marker comments) from data/users/*.
 # Existing "Status", "date" and "notes" values in the README are preserved; new rows are blank.
-# Groups: administrators, then adopters, then contact pending (yellow), then need org (blue), then no contact info (red dot; adopters stay green), then bad contact info (brown), then individuals (black dot, not eligible);
+# Groups: administrators, then adopters, then contact pending (yellow), then need org (blue), then bad contact info (brown), then no contact info (red dot; adopters stay green), then individuals (black dot, not eligible);
 # within each group folks from the same org are together
 # (alphabetical by org, no-org last, original order kept within an org).
 # Dots are computed: green = adopter (data/ADOPTERS.md), purple = administrative (metadata.json "role"),
+# brown = bad contact info (metadata.json "bad_contact": true, e.g. a dead linked-in link; sorted before red; green/purple win),
 # red = no contact info (no e-mail, linked-in, x, mastodon or bluesky),
-# brown = bad contact info (metadata.json "bad_contact": true, e.g. a dead linked-in link; sorted after red; green/purple win),
 # yellow = contact pending (has contact info but no other status),
 # blue = need org (has a contact method but no org; green/purple win),
 # black = individual, not eligible (no org and no contact method, or metadata.json "role": "individual", e.g. a student; CNCF adopters are organizations; green/purple win).
@@ -164,9 +164,9 @@ while read -r login; do
       status="$INDIVIDUAL_DOT${status:+ $status}"
       key=6
     elif [ "$m_bad" = "true" ] && [ -z "$dots" ]; then
-      # Contact info known to be bad (e.g. dead linked-in link): brown dot, sorted after no contact info; adopters (green) and administrators (purple) win
+      # Contact info known to be bad (e.g. dead linked-in link): brown dot, sorted before no contact info; adopters (green) and administrators (purple) win
       status="$BADCONTACT_DOT"
-      key=5
+      key=4
     elif [ -z "$org" ] && [ -z "$dots" ]; then
       if [ -n "$contact" ]; then
         # No org but has a contact method: need org (blue), sorted after contact pending
@@ -177,10 +177,10 @@ while read -r login; do
         status="$INDIVIDUAL_DOT${status#"$dots"}"
         key=6
       fi
-    # No contact info: red dot (after the other dots), sorted after need org; adopters (green) win
+    # No contact info: red dot (after the other dots), sorted after bad contact info; adopters (green) win
     elif [ -z "$contact" ] && [[ "$status" != *"$ADOPTER_DOT"* ]]; then
       status="$dots$NOCONTACT_DOT${status#"$dots"}"
-      key=4
+      key=5
     fi
     # Has contact info but no other status: contact pending (yellow)
     [ -n "$contact" ] && [ -z "${status//[[:space:]]/}" ] && status="$PENDING_DOT"
@@ -206,7 +206,7 @@ status_table=$(mktemp)
 {
   echo "| key | meaning | org count<sup>1</sup> | person count<sup>2</sup> |"
   echo "|:------:|---------|----------------------:|-------------------------:|"
-  for row in "$ADMIN_DOT|administrative" "$ADOPTER_DOT|adopter" "$PENDING_DOT|contact pending" "$NEEDORG_DOT|contact pending, need org" "$NOCONTACT_DOT|no contact info" "$BADCONTACT_DOT|bad contact info" "$INDIVIDUAL_DOT|individual, not eligible<sup>3</sup>"; do
+  for row in "$ADMIN_DOT|administrative" "$ADOPTER_DOT|adopter" "$PENDING_DOT|contact pending" "$NEEDORG_DOT|contact pending, need org" "$BADCONTACT_DOT|bad contact info" "$NOCONTACT_DOT|no contact info" "$INDIVIDUAL_DOT|individual, not eligible<sup>3</sup>"; do
     echo "| ${row%%|*} | ${row#*|} | $(count_org "${row%%|*}") | $(count_person "${row%%|*}") |"
   done
   echo

@@ -8,8 +8,8 @@
 | 🟢 | adopter | 3 | 0 |
 | 🟡 | contact pending | 13 | 0 |
 | 🔵 | contact pending, need org | 0 | 22 |
-| 🔴 | no contact info | 6 | 0 |
 | 🟤 | bad contact info | 1 | 0 |
+| 🔴 | no contact info | 6 | 0 |
 | ⚫ | individual, not eligible<sup>3</sup> | 0 | 32 |
 
 <sup>1</sup> org count: number of unique orgs among the people with that status.
@@ -67,13 +67,13 @@
 | 43 | <small>[jblaher](https://github.com/jblaher)</small> | <small>Josh Blaher</small> |  | <small>[linked-in](https://www.linkedin.com/in/josh-blaher/)</small> | 🔵 |  |  |
 | 44 | <small>[Prarthana-1910](https://github.com/Prarthana-1910)</small> | <small>Prarthana Patil</small> |  | <small>[prarthanapatil2006​@gmail.com](mailto:prarthanapatil2006@gmail.com)</small> | 🔵 |  |  |
 | 45 | <small>[itsgnani](https://github.com/itsgnani)</small> | <small>Gnanendra Avvaru</small> |  | <small>[gnani​@wald.ai](mailto:gnani@wald.ai)</small> | 🔵 |  |  |
-| 46 | <small>[ptcrash](https://github.com/ptcrash)</small> | <small>Johnny Martin</small> | <small>@clearverified</small> |  | 🔴 |  |  |
-| 47 | <small>[RS-Credentive](https://github.com/RS-Credentive)</small> | <small>Robert Sherwood</small> | <small>@credentive-sec</small> |  | 🔴 |  |  |
-| 48 | <small>[NationalDigitalTwin](https://github.com/NationalDigitalTwin)</small> | <small>National Digital Twin</small> | <small>Department for Business and Trade</small> |  | 🔴 |  |  |
-| 49 | <small>[tom-sandler](https://github.com/tom-sandler)</small> | <small>Tom Sandler</small> | <small>@finnyai </small> |  | 🔴 |  |  |
-| 50 | <small>[rsellers001](https://github.com/rsellers001)</small> | <small>Robert Sellers</small> | <small>KAIM Inc.</small> |  | 🔴 |  |  |
-| 51 | <small>[saintskeeper](https://github.com/saintskeeper)</small> | <small>Walt-</small> | <small>@The-Mines </small> |  | 🔴 |  |  |
-| 52 | <small>[mlammerse](https://github.com/mlammerse)</small> | <small>Marcel Lammerse</small> | <small>Cyber Sense</small> | <small>[linked-in](https://www.linkedin.com/in/mlammerse/)</small> | 🟤 |  | <small>linked-in 404</small> |
+| 46 | <small>[mlammerse](https://github.com/mlammerse)</small> | <small>Marcel Lammerse</small> | <small>Cyber Sense</small> | <small>[linked-in](https://www.linkedin.com/in/mlammerse/)</small> | 🟤 |  | <small>linked-in 404</small> |
+| 47 | <small>[ptcrash](https://github.com/ptcrash)</small> | <small>Johnny Martin</small> | <small>@clearverified</small> |  | 🔴 |  |  |
+| 48 | <small>[RS-Credentive](https://github.com/RS-Credentive)</small> | <small>Robert Sherwood</small> | <small>@credentive-sec</small> |  | 🔴 |  |  |
+| 49 | <small>[NationalDigitalTwin](https://github.com/NationalDigitalTwin)</small> | <small>National Digital Twin</small> | <small>Department for Business and Trade</small> |  | 🔴 |  |  |
+| 50 | <small>[tom-sandler](https://github.com/tom-sandler)</small> | <small>Tom Sandler</small> | <small>@finnyai </small> |  | 🔴 |  |  |
+| 51 | <small>[rsellers001](https://github.com/rsellers001)</small> | <small>Robert Sellers</small> | <small>KAIM Inc.</small> |  | 🔴 |  |  |
+| 52 | <small>[saintskeeper](https://github.com/saintskeeper)</small> | <small>Walt-</small> | <small>@The-Mines </small> |  | 🔴 |  |  |
 | 53 | <small>[mvankradenburgh](https://github.com/mvankradenburgh)</small> | <small>Mike Van Kradenburgh</small> |  |  | ⚫ |  |  |
 | 54 | <small>[gpeavy](https://github.com/gpeavy)</small> |  |  |  | ⚫ |  |  |
 | 55 | <small>[jonathanhle](https://github.com/jonathanhle)</small> | <small>Jonathan Le</small> |  |  | ⚫ |  |  |
