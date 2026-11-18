@@ -178,7 +178,7 @@ while read -r login; do
     printf '%s\t%s\t%s\t| $NUM | %s | %s | %s | %s | %s | %s |\n' "$key" "$noorg" "$orgkey" "$(sm "[$login](https://github.com/$login)")" "$(sm "$(esc "$name")")" "$(sm "$(esc "$org")")" "$(sm "$contact")" "$status" "$(sm "${DATE[$login]:-}")"
 done < "$DATA_DIR/followers.txt" > "$rows"
 {
-  echo "| num | id | name | org | contact | <small>status</small> | date |"
+  echo "| <small>num</small> | <small>id</small> | <small>name</small> | <small>org</small> | <small>contact</small> | <small>status</small> | <small>date</small> |"
   echo "|----:|----|------|-----|---------|--------|------|"
   sort -s -t $'\t' -k1,1n -k2,2n -k3,3 "$rows" | cut -f4- | awk '{n++; sub(/\$NUM/, n); print}'
 } > "$table"
