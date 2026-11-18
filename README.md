@@ -111,7 +111,7 @@
 Call for adopters: [oscal-compass/community#191](https://github.com/oscal-compass/community/issues/191)
 
 ### Email template
-**Subject:** OSCAL Compass adopters list: permission to list `<organization>`
+**Subject:** OSCAL Compass adopters
 
 > Hi `<first name>`,
 >
