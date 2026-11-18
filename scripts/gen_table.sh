@@ -178,7 +178,7 @@ while read -r login; do
     printf '%s\t%s\t%s\t| $NUM | %s | %s | %s | %s | %s | %s |\n' "$key" "$noorg" "$orgkey" "$(sm "[$login](https://github.com/$login)")" "$(sm "$(esc "$name")")" "$(sm "$(esc "$org")")" "$(sm "$contact")" "$status" "$(sm "${DATE[$login]:-}")"
 done < "$DATA_DIR/followers.txt" > "$rows"
 {
-  echo "| <small>num</small> | <small>id</small> | <small>name</small> | <small>org</small> | <small>contact</small> | <small>status</small> | <small>date</small> |"
+  echo "| num | id | name | org | contact | key | date |"
   echo "|----:|----|------|-----|---------|--------|------|"
   sort -s -t $'\t' -k1,1n -k2,2n -k3,3 "$rows" | cut -f4- | awk '{n++; sub(/\$NUM/, n); print}'
 } > "$table"
@@ -189,7 +189,7 @@ count_org()    { awk -F'\t' -v d="$1" '$1==d && $2!="" && !seen[$2]++ {n++} END 
 count_person() { awk -F'\t' -v d="$1" '$1==d && $2=="" {n++} END {print n+0}' "$stats"; }
 status_table=$(mktemp)
 {
-  echo "| status | meaning | org count<sup>1</sup> | person count<sup>2</sup> |"
+  echo "| key | meaning | org count<sup>1</sup> | person count<sup>2</sup> |"
   echo "|:------:|---------|----------------------:|-------------------------:|"
   for row in "$ADMIN_DOT|administrative" "$ADOPTER_DOT|adopter" "$PENDING_DOT|contact pending" "$NEEDORG_DOT|contact pending, need org" "$NOCONTACT_DOT|no contact info" "$INDIVIDUAL_DOT|individual, not eligible<sup>3</sup>"; do
     echo "| ${row%%|*} | ${row#*|} | $(count_org "${row%%|*}") | $(count_person "${row%%|*}") |"

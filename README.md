@@ -2,7 +2,7 @@
 ## Followers
 
 <!-- status-table:begin -->
-| status | meaning | org count<sup>1</sup> | person count<sup>2</sup> |
+| key | meaning | org count<sup>1</sup> | person count<sup>2</sup> |
 |:------:|---------|----------------------:|-------------------------:|
 | 🟣 | administrative | 1 | 0 |
 | 🟢 | adopter | 3 | 0 |
@@ -19,7 +19,7 @@
 <!-- status-table:end -->
 
 <!-- followers-table:begin -->
-| <small>num</small> | <small>id</small> | <small>name</small> | <small>org</small> | <small>contact</small> | <small>status</small> | <small>date</small> |
+| num | id | name | org | contact | key | date |
 |----:|----|------|-----|---------|--------|------|
 | 1 | <small>[krook](https://github.com/krook)</small> | <small>Daniel Krook</small> | <small>@cncf </small> | <small>[linked-in](https://www.linkedin.com/in/krook)</small> | 🟣 |  |
 | 2 | <small>[degenaro](https://github.com/degenaro)</small> | <small>Lou DeGenaro</small> | <small>IBM</small> | <small>[lou.degenaro​@gmail.com](mailto:lou.degenaro@gmail.com)</small> | 🟢 |  |
