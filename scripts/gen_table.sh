@@ -8,7 +8,8 @@
 # red = no contact info (no e-mail, linked-in, x, mastodon or bluesky),
 # yellow = contact pending (has contact info but no other status),
 # blue = need org (has a contact method but no org; green/purple win),
-# black = individual, not eligible (no org and no contact method; CNCF adopters are organizations; green/purple win).
+# black = individual, not eligible (no org and no contact method, or metadata.json "role": "individual", e.g. a student; CNCF adopters are organizations; green/purple win).
+# metadata.json "note" is free text for the maintainers; it is not shown in the table.
 # Any other text in the status cell is preserved.
 set -euo pipefail
 
@@ -153,7 +154,11 @@ while read -r login; do
       done
     fi
     key=2; [[ "$status" == *"$ADOPTER_DOT"* ]] && key=1; [[ "$status" == *"$ADMIN_DOT"* ]] && key=0
-    if [ -z "$org" ] && [ -z "$dots" ]; then
+    if [ "$m_role" = "individual" ] && [ -z "$dots" ]; then
+      # Marked as an individual in metadata (e.g. a student): not eligible even if an org is listed
+      status="$INDIVIDUAL_DOT${status:+ $status}"
+      key=5
+    elif [ -z "$org" ] && [ -z "$dots" ]; then
       if [ -n "$contact" ]; then
         # No org but has a contact method: need org (blue), sorted after contact pending
         status="$NEEDORG_DOT${status#"$dots"}"
@@ -172,6 +177,7 @@ while read -r login; do
     [ -n "$contact" ] && [ -z "${status//[[:space:]]/}" ] && status="$PENDING_DOT"
     noorg=0; [ -z "$org" ] && noorg=1
     orgkey=$(tr -d '\t' <<<"${org,,}")
+    [ "$m_role" = "individual" ] && [ -z "$dots" ] && { noorg=1; orgkey=""; }   # counted as a person, not an org
     for d in "$ADMIN_DOT" "$ADOPTER_DOT" "$PENDING_DOT" "$NEEDORG_DOT" "$NOCONTACT_DOT" "$INDIVIDUAL_DOT"; do
       [[ "$status" == *"$d"* ]] && printf '%s\t%s\n' "$d" "$orgkey" >> "$stats"
     done
@@ -199,7 +205,7 @@ status_table=$(mktemp)
   echo
   echo "<sup>2</sup> person count: number of people with that status who are not in an org (no org listed)."
   echo
-  echo "<sup>3</sup> individual, not eligible: a person with no org listed and no contact method. The CNCF TOC FAQ [defines an adopter]($ADOPTER_DEF) as an organization (\"any organization that currently and actively, successfully leverages that project...\"), so an individual is not eligible to be listed in ADOPTERS.md."
+  echo "<sup>3</sup> individual, not eligible: a person with no org listed and no contact method, or marked as an individual (for example a student). The CNCF TOC FAQ [defines an adopter]($ADOPTER_DEF) as an organization (\"any organization that currently and actively, successfully leverages that project...\"), so an individual is not eligible to be listed in ADOPTERS.md."
 } > "$status_table"
 rm -f "$stats"
 
