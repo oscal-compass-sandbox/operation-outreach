@@ -19,7 +19,7 @@
 <!-- status-table:end -->
 
 <!-- followers-table:begin -->
-| num | id | name | org | contact | status | date |
+| num | id | name | org | contact | <small>status</small> | date |
 |----:|----|------|-----|---------|--------|------|
 | 1 | <small>[krook](https://github.com/krook)</small> | <small>Daniel Krook</small> | <small>@cncf </small> | <small>[linked-in](https://www.linkedin.com/in/krook)</small> | 🟣 |  |
 | 2 | <small>[degenaro](https://github.com/degenaro)</small> | <small>Lou DeGenaro</small> | <small>IBM</small> | <small>[lou.degenaro​@gmail.com](mailto:lou.degenaro@gmail.com)</small> | 🟢 |  |
