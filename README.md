@@ -38,7 +38,7 @@
 | 15 | <small>[mlammerse](https://github.com/mlammerse)</small> | <small>Marcel Lammerse</small> | <small>Cyber Sense</small> | <small>[linked-in](https://www.linkedin.com/in/mlammerse/)</small> | 🟡 |  |
 | 16 | <small>[nynymike](https://github.com/nynymike)</small> | <small>Michael Schwartz</small> | <small>Gluu</small> | <small>[x](https://twitter.com/nynymike)</small> | 🟡 |  |
 | 17 | <small>[JDziurlaj](https://github.com/JDziurlaj)</small> | <small>John Dziurlaj</small> | <small>@HiltonRoscoe </small> | <small>[john​@hiltonroscoe.com](mailto:john@hiltonroscoe.com)</small> | 🟡 |  |
-| 18 | <small>[gvlx](https://github.com/gvlx)</small> | <small>Gerardo Lisboa</small> | <small>INFO-CARE</small> | <small>[x](https://twitter.com/gvlx)</small> | 🟡 | <small>2026-11-18</small> |
+| 18 | <small>[gvlx](https://github.com/gvlx)</small> | <small>Gerardo Lisboa</small> | <small>INFO-CARE</small> | <small>[linked-in](https://www.linkedin.com/in/gerardolisboa/)</small> | 🟡 | <small>2026-11-18</small> |
 | 19 | <small>[cooljeanius](https://github.com/cooljeanius)</small> | <small>Eric Gallager</small> | <small>NH House of Representatives</small> | <small>[linked-in](https://www.linkedin.com/in/eric-gallager-44118a34/)</small> | 🟡 |  |
 | 20 | <small>[sarasignedin](https://github.com/sarasignedin)</small> | <small>Sara Costa</small> | <small>@papaya-kiwi </small> | <small>[linked-in](https://www.linkedin.com/in/sara-costa-fl)</small> | 🟡 |  |
 | 21 | <small>[brian-ruf](https://github.com/brian-ruf)</small> | <small>Brian Ruf</small> | <small>Ruf Risk (@ruf-risk)</small> | <small>[linked-in](https://www.linkedin.com/in/brianruf)</small> | 🟡 |  |
