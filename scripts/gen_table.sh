@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # Build the followers table in README.md (between marker comments) from data/users/*.
-# Existing "Status" and "date" values in the README are preserved; new rows are blank.
+# Existing "Status", "date" and "notes" values in the README are preserved; new rows are blank.
 # Groups: administrators, then adopters, then contact pending (yellow), then need org (blue), then no contact info (red dot; adopters stay green), then individuals (black dot, not eligible);
 # within each group folks from the same org are together
 # (alphabetical by org, no-org last, original order kept within an org).
 # Dots are computed: green = adopter (data/ADOPTERS.md), purple = administrative (metadata.json "role"),
 # red = no contact info (no e-mail, linked-in, x, mastodon or bluesky),
+# brown = bad contact info (metadata.json "bad_contact": true, e.g. a dead linked-in link; sorted with red; green/purple win),
 # yellow = contact pending (has contact info but no other status),
 # blue = need org (has a contact method but no org; green/purple win),
 # black = individual, not eligible (no org and no contact method, or metadata.json "role": "individual", e.g. a student; CNCF adopters are organizations; green/purple win).
@@ -20,18 +21,21 @@ END='<!-- followers-table:end -->'
 SBEGIN='<!-- status-table:begin -->'
 SEND='<!-- status-table:end -->'
 
-# Preserve statuses and dates already in README: login -> status, login -> date
-declare -A STATUS DATE
+# Preserve statuses, dates and notes already in README: login -> status, login -> date, login -> notes
+declare -A STATUS DATE NOTE
 if [ -f "$README" ]; then
-  # Status is column 6 and date column 7 (awk fields $7/$8 after the leading "|"; date is absent in older READMEs);
+  # Status is column 6, date column 7 and notes column 8 (awk fields $7/$8/$9 after the leading "|"; absent in older READMEs);
   # login is the first "[login](https://github.com/login)" link
   while IFS= read -r line; do
     login=$(sed -E 's/^[^[]*\[([^]]+)\]\(https:\/\/github\.com\/.*/\1/' <<<"$line")
     st=$(awk -F'|' '{gsub(/^ +| +$/,"",$7); print $7}' <<<"$line")
     dt=$(awk -F'|' '{gsub(/^ +| +$/,"",$8); print $8}' <<<"$line")
+    nt=$(awk -F'|' '{gsub(/^ +| +$/,"",$9); print $9}' <<<"$line")
     dt="${dt//<small>/}"; dt="${dt//<\/small>/}"
+    nt="${nt//<small>/}"; nt="${nt//<\/small>/}"
     [ -n "$login" ] && [ -n "$st" ] && STATUS["$login"]="$st"
     [ -n "$login" ] && [ -n "$dt" ] && DATE["$login"]="$dt"
+    [ -n "$login" ] && [ -n "$nt" ] && NOTE["$login"]="$nt"
   done < <(sed -n "/$BEGIN/,/$END/p" "$README" | grep -E '\[[^]]+\]\(https://github\.com/')
 fi
 
@@ -40,6 +44,7 @@ ADOPTERS="${ADOPTERS:-$DATA_DIR/ADOPTERS.md}"
 ADOPTER_DOT='🟢'
 ADMIN_DOT='🟣'
 NOCONTACT_DOT='🔴'
+BADCONTACT_DOT='🟤'
 PENDING_DOT='🟡'
 NEEDORG_DOT='🔵'
 INDIVIDUAL_DOT='⚫'
@@ -110,11 +115,11 @@ while read -r login; do
     org=$(normalize_org "$(jq -r '.company // ""' "$u")")
     email=$(jq -r '.email // ""' "$u")
     # Hand-maintained metadata (data/metadata.json) overrides GitHub values: name, org, email, linkedin
-    meta_li=""; m_role=""
+    meta_li=""; m_role=""; m_bad=""
     if [ -f "$METADATA" ]; then
       # Unit separator (not whitespace) so empty fields are not collapsed by read
-      IFS=$'\x1f' read -r m_name m_org m_email meta_li m_role < <(jq -r --arg l "$login" \
-        '(.[$l] // {}) | [.name // "", .org // "", .email // "", .linkedin // "", .role // ""] | join("\u001f")' "$METADATA")
+      IFS=$'\x1f' read -r m_name m_org m_email meta_li m_role m_bad < <(jq -r --arg l "$login" \
+        '(.[$l] // {}) | [.name // "", .org // "", .email // "", .linkedin // "", .role // "", ((.bad_contact // false) | tostring)] | join("\u001f")' "$METADATA")
       [ -n "$m_name" ] && name="$m_name"
       [ -n "$m_org" ] && org="$m_org"
       [ -n "$m_email" ] && email="$m_email"
@@ -126,7 +131,7 @@ while read -r login; do
     [ -n "$meta_li" ] && li="$meta_li"
     blog=$(jq -r '.blog // ""' "$u")
     status="${STATUS[$login]:-}"
-    status="${status//$ADOPTER_DOT/}"; status="${status//$ADMIN_DOT/}"; status="${status//$NOCONTACT_DOT/}"; status="${status//$PENDING_DOT/}"; status="${status//$NEEDORG_DOT/}"; status="${status//$INDIVIDUAL_DOT/}"   # dots are recomputed
+    status="${status//$ADOPTER_DOT/}"; status="${status//$ADMIN_DOT/}"; status="${status//$NOCONTACT_DOT/}"; status="${status//$BADCONTACT_DOT/}"; status="${status//$PENDING_DOT/}"; status="${status//$NEEDORG_DOT/}"; status="${status//$INDIVIDUAL_DOT/}"   # dots are recomputed
     status="${status#"${status%%[![:space:]]*}"}"
     dots=""
     if is_adopter "$org" "$login" "$email" "$blog"; then
@@ -158,6 +163,10 @@ while read -r login; do
       # Marked as an individual in metadata (e.g. a student): not eligible even if an org is listed
       status="$INDIVIDUAL_DOT${status:+ $status}"
       key=5
+    elif [ "$m_bad" = "true" ] && [ -z "$dots" ]; then
+      # Contact info known to be bad (e.g. dead linked-in link): brown dot, sorted with no contact info; adopters (green) and administrators (purple) win
+      status="$BADCONTACT_DOT"
+      key=4
     elif [ -z "$org" ] && [ -z "$dots" ]; then
       if [ -n "$contact" ]; then
         # No org but has a contact method: need org (blue), sorted after contact pending
@@ -178,14 +187,14 @@ while read -r login; do
     noorg=0; [ -z "$org" ] && noorg=1
     orgkey=$(tr -d '\t' <<<"${org,,}")
     [ "$m_role" = "individual" ] && [ -z "$dots" ] && { noorg=1; orgkey=""; }   # counted as a person, not an org
-    for d in "$ADMIN_DOT" "$ADOPTER_DOT" "$PENDING_DOT" "$NEEDORG_DOT" "$NOCONTACT_DOT" "$INDIVIDUAL_DOT"; do
+    for d in "$ADMIN_DOT" "$ADOPTER_DOT" "$PENDING_DOT" "$NEEDORG_DOT" "$NOCONTACT_DOT" "$BADCONTACT_DOT" "$INDIVIDUAL_DOT"; do
       [[ "$status" == *"$d"* ]] && printf '%s\t%s\n' "$d" "$orgkey" >> "$stats"
     done
-    printf '%s\t%s\t%s\t| $NUM | %s | %s | %s | %s | %s | %s |\n' "$key" "$noorg" "$orgkey" "$(sm "[$login](https://github.com/$login)")" "$(sm "$(esc "$name")")" "$(sm "$(esc "$org")")" "$(sm "$contact")" "$status" "$(sm "${DATE[$login]:-}")"
+    printf '%s\t%s\t%s\t| $NUM | %s | %s | %s | %s | %s | %s | %s |\n' "$key" "$noorg" "$orgkey" "$(sm "[$login](https://github.com/$login)")" "$(sm "$(esc "$name")")" "$(sm "$(esc "$org")")" "$(sm "$contact")" "$status" "$(sm "${DATE[$login]:-}")" "$(sm "${NOTE[$login]:-}")"
 done < "$DATA_DIR/followers.txt" > "$rows"
 {
-  echo "| num | id | name | org | contact | key | date |"
-  echo "|----:|----|------|-----|---------|--------|------|"
+  echo "| num | id | name | org | contact | key | date | notes |"
+  echo "|----:|----|------|-----|---------|--------|------|-------|"
   sort -s -t $'\t' -k1,1n -k2,2n -k3,3 "$rows" | cut -f4- | awk '{n++; sub(/\$NUM/, n); print}'
 } > "$table"
 rm -f "$rows"
@@ -197,7 +206,7 @@ status_table=$(mktemp)
 {
   echo "| key | meaning | org count<sup>1</sup> | person count<sup>2</sup> |"
   echo "|:------:|---------|----------------------:|-------------------------:|"
-  for row in "$ADMIN_DOT|administrative" "$ADOPTER_DOT|adopter" "$PENDING_DOT|contact pending" "$NEEDORG_DOT|contact pending, need org" "$NOCONTACT_DOT|no contact info" "$INDIVIDUAL_DOT|individual, not eligible<sup>3</sup>"; do
+  for row in "$ADMIN_DOT|administrative" "$ADOPTER_DOT|adopter" "$PENDING_DOT|contact pending" "$NEEDORG_DOT|contact pending, need org" "$NOCONTACT_DOT|no contact info" "$BADCONTACT_DOT|bad contact info" "$INDIVIDUAL_DOT|individual, not eligible<sup>3</sup>"; do
     echo "| ${row%%|*} | ${row#*|} | $(count_org "${row%%|*}") | $(count_person "${row%%|*}") |"
   done
   echo
