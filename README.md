@@ -115,17 +115,16 @@ Call for adopters: [oscal-compass/community#191](https://github.com/oscal-compas
 
 > Hi `<first name>`,
 >
-> OSCAL Compass is preparing to apply for graduation to CNCF Incubation level. CNCF [evaluates](https://github.com/cncf/toc/blob/main/process/README.md#adopter-interviews-are-conducted) a project's adopters to help decide the merits of awarding graduation, and everyone who uses or follows the project benefits when the project graduates.
+> Thank you for your interest in OSCAL Compass and for following our project on CNCF GitHub!
 >
-> You follow the project on GitHub, so we're reaching out. We'd welcome `<organization>` on our public [ADOPTERS.md](https://github.com/oscal-compass/community/blob/main/ADOPTERS.md) list.
+> We are excited to share that we are applying for CNCF Incubation status, and we are collecting testimonials from adopters and followers.
 >
-> Just reply with:
+> Would you be open to endorsing OSCAL Compass as an adopter, on behalf of your organization? The endorsement can be a public testimonial or a private letter to the CNCF committee, whichever you prefer.
 >
-> - Your permission for us to list your organization publicly
-> - Your organization's URL
+> We will handle all the forms, so this requires no extra work from you. We just need your confirmation to list your organization as an adopter for the process.
 >
-> Or comment on the call for adopters: https://github.com/oscal-compass/community/issues/191. No other details are needed.
+> Looking forward to hearing from you!
 >
-> No reply is needed if this message isn't relevant. Thank you for your interest in OSCAL Compass.
+> Questions or comments are welcome on the adoption open issue: https://github.com/oscal-compass/community/issues/191
 >
 > `<your name>` on behalf of the OSCAL Compass project
