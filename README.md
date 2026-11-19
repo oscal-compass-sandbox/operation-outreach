@@ -7,7 +7,7 @@
 | 🟣 | administrative | 1 | 0 |
 | 🟢 | adopter | 3 | 0 |
 | 🟡 | contact pending | 13 | 0 |
-| 🔵 | contact pending, need org | 0 | 22 |
+| 🔵 | contact pending, need org | 0 | 21 |
 | 🟤 | bad contact info | 1 | 0 |
 | 🔴 | no contact info | 6 | 0 |
 | ⚫ | individual, not eligible<sup>3</sup> | 0 | 32 |
@@ -29,41 +29,41 @@
 | 5 | <small>[jflowers](https://github.com/jflowers)</small> | <small>Jay Flowers</small> | <small>Red Hat</small> | <small>[jflowers​@redhat.com](mailto:jflowers@redhat.com)</small> | 🟢 |  |  |
 | 6 | <small>[michaelepley](https://github.com/michaelepley)</small> | <small>Michael Epley</small> | <small>Red Hat</small> | <small>[michaelepley​@gmail.com](mailto:michaelepley@gmail.com)</small> | 🟢 |  |  |
 | 7 | <small>[huiwangredhat](https://github.com/huiwangredhat)</small> | <small>Sophia Wang</small> | <small>Red Hat</small> | <small>[huiwang​@redhat.com](mailto:huiwang@redhat.com)</small> | 🟢 |  |  |
-| 8 | <small>[jpower432](https://github.com/jpower432)</small> | <small>Jennifer Power</small> | <small>Red Hat</small> | <small>[jpower​@redhat.com](mailto:jpower@redhat.com)</small> | 🟢 |  |  |
-| 9 | <small>[hbraswelrh](https://github.com/hbraswelrh)</small> | <small>Hannah Braswell</small> | <small>Red Hat</small> | <small>[linked-in](https://www.linkedin.com/in/hannah-braswell-414887221/)</small> | 🟢 |  |  |
-| 10 | <small>[sunstonesecure-robert](https://github.com/sunstonesecure-robert)</small> | <small>Robert Ficcaglia</small> | <small>Sunstone Secure, LLC</small> | <small>[rficcaglia​@sunstonesecure.com](mailto:rficcaglia@sunstonesecure.com)</small> | 🟢 |  |  |
-| 11 | <small>[aavarca](https://github.com/aavarca)</small> | <small>Anthony Avarca</small> | <small>Argonne National Laboratory</small> | <small>[aavarca​@anl.gov](mailto:aavarca@anl.gov)</small> | 🟡 | <small>2026-11-18</small> |  |
-| 12 | <small>[msantore](https://github.com/msantore)</small> | <small>MSantore</small> | <small>@blockskunk </small> | <small>[x](https://twitter.com/santoretech)</small> | 🟡 | <small>2026-11-18</small> |  |
-| 13 | <small>[akramIOT](https://github.com/akramIOT)</small> | <small>Akram Sheriff</small> | <small>CISCO SYSTEMS, CA</small> | <small>[sheriff.akram​@gmail.com](mailto:sheriff.akram@gmail.com)</small> | 🟡 | <small>2026-11-18</small> |  |
-| 14 | <small>[nynymike](https://github.com/nynymike)</small> | <small>Michael Schwartz</small> | <small>Gluu</small> | <small>[linked-in](https://www.linkedin.com/in/nynymike/)</small> | 🟡 | <small>2026-11-19</small> |  |
-| 15 | <small>[JDziurlaj](https://github.com/JDziurlaj)</small> | <small>John Dziurlaj</small> | <small>@HiltonRoscoe </small> | <small>[john​@hiltonroscoe.com](mailto:john@hiltonroscoe.com)</small> | 🟡 | <small>2026-11-19</small> |  |
-| 16 | <small>[gvlx](https://github.com/gvlx)</small> | <small>Gerardo Lisboa</small> | <small>INFO-CARE</small> | <small>[linked-in](https://www.linkedin.com/in/gerardolisboa/)</small> | 🟡 | <small>2026-11-18</small> |  |
-| 17 | <small>[cooljeanius](https://github.com/cooljeanius)</small> | <small>Eric Gallager</small> | <small>NH House of Representatives</small> | <small>[linked-in](https://www.linkedin.com/in/eric-gallager-44118a34/)</small> | 🟡 |  |  |
-| 18 | <small>[sarasignedin](https://github.com/sarasignedin)</small> | <small>Sara Costa</small> | <small>@papaya-kiwi </small> | <small>[linked-in](https://www.linkedin.com/in/sara-costa-fl)</small> | 🟡 |  |  |
-| 19 | <small>[brian-ruf](https://github.com/brian-ruf)</small> | <small>Brian Ruf</small> | <small>Ruf Risk (@ruf-risk)</small> | <small>[linked-in](https://www.linkedin.com/in/brianruf)</small> | 🟡 |  |  |
-| 20 | <small>[ethanolivertroy](https://github.com/ethanolivertroy)</small> | <small>Ethan Troy</small> | <small>SpaceXSI</small> | <small>[x](https://x.com/ethantroy)</small> | 🟡 |  |  |
-| 21 | <small>[masteinhauser](https://github.com/masteinhauser)</small> | <small>Myles Steinhauser</small> | <small>@teamportage</small> | <small>[x](https://twitter.com/masteinhauser)</small> | 🟡 |  |  |
-| 22 | <small>[WandererJackalope](https://github.com/WandererJackalope)</small> | <small>Jackson Bailey</small> | <small>@ttitamu @oSTEM </small> | <small>[jackson​@jrbailey.tools](mailto:jackson@jrbailey.tools)</small> | 🟡 |  |  |
-| 23 | <small>[topperge](https://github.com/topperge)</small> | <small>Matt Topper</small> | <small>UberEther</small> | <small>[matt​@matttopper.com](mailto:matt@matttopper.com)</small> | 🟡 | <small>2026-11-19</small> |  |
-| 24 | <small>[hagdahl](https://github.com/hagdahl)</small> | <small>David Hagdahl</small> |  | <small>[david​@hagdahl.se](mailto:david@hagdahl.se)</small> | 🔵 |  |  |
-| 25 | <small>[sdouche](https://github.com/sdouche)</small> | <small>Sébastien Douche</small> |  | <small>[seb​@nmeos.net](mailto:seb@nmeos.net)</small> | 🔵 |  |  |
-| 26 | <small>[georgalis](https://github.com/georgalis)</small> | <small>George Georgalis</small> |  | <small>[george​@galis.org](mailto:george@galis.org)</small> | 🔵 |  |  |
-| 27 | <small>[yoonation](https://github.com/yoonation)</small> | <small>Myoung Hong</small> |  | <small>[linked-in](https://www.linkedin.com/in/myoung-hong/)</small> | 🔵 |  |  |
-| 28 | <small>[moteesh](https://github.com/moteesh)</small> | <small>Moteesh Reddy M</small> |  | <small>[moteesh​@gmail.com](mailto:moteesh@gmail.com)</small> | 🔵 |  |  |
-| 29 | <small>[HackingGate](https://github.com/HackingGate)</small> | <small>Tong</small> |  | <small>[i​@hackinggate.com](mailto:i@hackinggate.com)</small> | 🔵 |  |  |
-| 30 | <small>[bishnubista](https://github.com/bishnubista)</small> | <small>Bishnu Bista</small> |  | <small>[linked-in](https://www.linkedin.com/in/bishnubista/)</small> | 🔵 |  |  |
-| 31 | <small>[orvis98](https://github.com/orvis98)</small> | <small>John Enarsson</small> |  | <small>[linked-in](https://www.linkedin.com/in/john-enarsson-b62921199)</small> | 🔵 |  |  |
-| 32 | <small>[d-bryan](https://github.com/d-bryan)</small> | <small>Dylan Bryan</small> |  | <small>[linked-in](https://linkedin.com/in/dylan-bryan-dev)</small> | 🔵 |  |  |
-| 33 | <small>[ZoSam32](https://github.com/ZoSam32)</small> | <small>ZoSam32</small> |  | <small>[x](https://twitter.com/ZoSam32)</small> | 🔵 |  |  |
-| 34 | <small>[austinsonger](https://github.com/austinsonger)</small> | <small>Austin Songer, CISSP</small> |  | <small>[x](https://twitter.com/TheAustinSonger)</small> | 🔵 |  |  |
-| 35 | <small>[dfkunstler](https://github.com/dfkunstler)</small> | <small>fritz kunstler</small> |  | <small>[linked-in](https://www.linkedin.com/in/fritzkunstler/)</small> | 🔵 |  |  |
-| 36 | <small>[brittanyhuntzberry](https://github.com/brittanyhuntzberry)</small> | <small>Brittany Huntzberry</small> |  | <small>[brittanyhuntzberry​@gmail.com](mailto:brittanyhuntzberry@gmail.com)</small> | 🔵 |  |  |
+| 8 | <small>[brittanyhuntzberry](https://github.com/brittanyhuntzberry)</small> | <small>Brittany Huntzberry</small> | <small>Red Hat</small> | <small>[brittanyhuntzberry​@gmail.com](mailto:brittanyhuntzberry@gmail.com)</small> | 🟢 |  |  |
+| 9 | <small>[jpower432](https://github.com/jpower432)</small> | <small>Jennifer Power</small> | <small>Red Hat</small> | <small>[jpower​@redhat.com](mailto:jpower@redhat.com)</small> | 🟢 |  |  |
+| 10 | <small>[hbraswelrh](https://github.com/hbraswelrh)</small> | <small>Hannah Braswell</small> | <small>Red Hat</small> | <small>[linked-in](https://www.linkedin.com/in/hannah-braswell-414887221/)</small> | 🟢 |  |  |
+| 11 | <small>[sunstonesecure-robert](https://github.com/sunstonesecure-robert)</small> | <small>Robert Ficcaglia</small> | <small>Sunstone Secure, LLC</small> | <small>[rficcaglia​@sunstonesecure.com](mailto:rficcaglia@sunstonesecure.com)</small> | 🟢 |  |  |
+| 12 | <small>[aavarca](https://github.com/aavarca)</small> | <small>Anthony Avarca</small> | <small>Argonne National Laboratory</small> | <small>[aavarca​@anl.gov](mailto:aavarca@anl.gov)</small> | 🟡 | <small>2026-11-18</small> |  |
+| 13 | <small>[msantore](https://github.com/msantore)</small> | <small>MSantore</small> | <small>@blockskunk </small> | <small>[x](https://twitter.com/santoretech)</small> | 🟡 | <small>2026-11-18</small> |  |
+| 14 | <small>[akramIOT](https://github.com/akramIOT)</small> | <small>Akram Sheriff</small> | <small>CISCO SYSTEMS, CA</small> | <small>[sheriff.akram​@gmail.com](mailto:sheriff.akram@gmail.com)</small> | 🟡 | <small>2026-11-18</small> |  |
+| 15 | <small>[nynymike](https://github.com/nynymike)</small> | <small>Michael Schwartz</small> | <small>Gluu</small> | <small>[linked-in](https://www.linkedin.com/in/nynymike/)</small> | 🟡 | <small>2026-11-19</small> |  |
+| 16 | <small>[JDziurlaj](https://github.com/JDziurlaj)</small> | <small>John Dziurlaj</small> | <small>@HiltonRoscoe </small> | <small>[john​@hiltonroscoe.com](mailto:john@hiltonroscoe.com)</small> | 🟡 | <small>2026-11-19</small> |  |
+| 17 | <small>[gvlx](https://github.com/gvlx)</small> | <small>Gerardo Lisboa</small> | <small>INFO-CARE</small> | <small>[linked-in](https://www.linkedin.com/in/gerardolisboa/)</small> | 🟡 | <small>2026-11-18</small> |  |
+| 18 | <small>[cooljeanius](https://github.com/cooljeanius)</small> | <small>Eric Gallager</small> | <small>NH House of Representatives</small> | <small>[linked-in](https://www.linkedin.com/in/eric-gallager-44118a34/)</small> | 🟡 |  |  |
+| 19 | <small>[sarasignedin](https://github.com/sarasignedin)</small> | <small>Sara Costa</small> | <small>@papaya-kiwi </small> | <small>[linked-in](https://www.linkedin.com/in/sara-costa-fl)</small> | 🟡 |  |  |
+| 20 | <small>[brian-ruf](https://github.com/brian-ruf)</small> | <small>Brian Ruf</small> | <small>Ruf Risk (@ruf-risk)</small> | <small>[linked-in](https://www.linkedin.com/in/brianruf)</small> | 🟡 |  |  |
+| 21 | <small>[ethanolivertroy](https://github.com/ethanolivertroy)</small> | <small>Ethan Troy</small> | <small>SpaceXSI</small> | <small>[x](https://x.com/ethantroy)</small> | 🟡 |  |  |
+| 22 | <small>[masteinhauser](https://github.com/masteinhauser)</small> | <small>Myles Steinhauser</small> | <small>@teamportage</small> | <small>[x](https://twitter.com/masteinhauser)</small> | 🟡 |  |  |
+| 23 | <small>[WandererJackalope](https://github.com/WandererJackalope)</small> | <small>Jackson Bailey</small> | <small>@ttitamu @oSTEM </small> | <small>[jackson​@jrbailey.tools](mailto:jackson@jrbailey.tools)</small> | 🟡 |  |  |
+| 24 | <small>[topperge](https://github.com/topperge)</small> | <small>Matt Topper</small> | <small>UberEther</small> | <small>[matt​@matttopper.com](mailto:matt@matttopper.com)</small> | 🟡 | <small>2026-11-19</small> |  |
+| 25 | <small>[hagdahl](https://github.com/hagdahl)</small> | <small>David Hagdahl</small> |  | <small>[david​@hagdahl.se](mailto:david@hagdahl.se)</small> | 🔵 |  |  |
+| 26 | <small>[sdouche](https://github.com/sdouche)</small> | <small>Sébastien Douche</small> |  | <small>[seb​@nmeos.net](mailto:seb@nmeos.net)</small> | 🔵 |  |  |
+| 27 | <small>[georgalis](https://github.com/georgalis)</small> | <small>George Georgalis</small> |  | <small>[george​@galis.org](mailto:george@galis.org)</small> | 🔵 |  |  |
+| 28 | <small>[yoonation](https://github.com/yoonation)</small> | <small>Myoung Hong</small> |  | <small>[linked-in](https://www.linkedin.com/in/myoung-hong/)</small> | 🔵 |  |  |
+| 29 | <small>[moteesh](https://github.com/moteesh)</small> | <small>Moteesh Reddy M</small> |  | <small>[moteesh​@gmail.com](mailto:moteesh@gmail.com)</small> | 🔵 |  |  |
+| 30 | <small>[HackingGate](https://github.com/HackingGate)</small> | <small>Tong</small> |  | <small>[i​@hackinggate.com](mailto:i@hackinggate.com)</small> | 🔵 |  |  |
+| 31 | <small>[bishnubista](https://github.com/bishnubista)</small> | <small>Bishnu Bista</small> |  | <small>[linked-in](https://www.linkedin.com/in/bishnubista/)</small> | 🔵 |  |  |
+| 32 | <small>[orvis98](https://github.com/orvis98)</small> | <small>John Enarsson</small> |  | <small>[linked-in](https://www.linkedin.com/in/john-enarsson-b62921199)</small> | 🔵 |  |  |
+| 33 | <small>[d-bryan](https://github.com/d-bryan)</small> | <small>Dylan Bryan</small> |  | <small>[linked-in](https://linkedin.com/in/dylan-bryan-dev)</small> | 🔵 |  |  |
+| 34 | <small>[ZoSam32](https://github.com/ZoSam32)</small> | <small>ZoSam32</small> |  | <small>[x](https://twitter.com/ZoSam32)</small> | 🔵 |  |  |
+| 35 | <small>[austinsonger](https://github.com/austinsonger)</small> | <small>Austin Songer, CISSP</small> |  | <small>[x](https://twitter.com/TheAustinSonger)</small> | 🔵 |  |  |
+| 36 | <small>[dfkunstler](https://github.com/dfkunstler)</small> | <small>fritz kunstler</small> |  | <small>[linked-in](https://www.linkedin.com/in/fritzkunstler/)</small> | 🔵 |  |  |
 | 37 | <small>[giovanniclima](https://github.com/giovanniclima)</small> | <small>Giovanni Senzani </small> |  | <small>[senzanigiovanni1111​@gmail.com](mailto:senzanigiovanni1111@gmail.com)</small> | 🔵 |  |  |
 | 38 | <small>[moteesh-reddy](https://github.com/moteesh-reddy)</small> | <small>Moteesh</small> |  | <small>[linked-in](https://www.linkedin.com/in/moteesh/)</small> | 🔵 |  |  |
 | 39 | <small>[tomassantos484](https://github.com/tomassantos484)</small> | <small>Tomas Santos Yciano</small> |  | <small>[linked-in](https://www.linkedin.com/in/tjsy/)</small> | 🔵 |  |  |
 | 40 | <small>[cypr0](https://github.com/cypr0)</small> | <small>Philipp Rosch</small> |  | <small>[linked-in](https://linkedin.com/in/cypr0)</small> | 🔵 |  |  |
 | 41 | <small>[Acuspeedster](https://github.com/Acuspeedster)</small> | <small>ARNAV RAJ</small> |  | <small>[linked-in](https://www.linkedin.com/in/arnav-raj-0b7a44269/)</small> | 🔵 |  |  |
-| 42 | <small>[Champbreed](https://github.com/Champbreed)</small> | <small>Simon Essien</small> |  | <small>[simonessien01​@gmail.com](mailto:simonessien01@gmail.com)</small> | 🔵 |  |  |
+| 42 | <small>[Champbreed](https://github.com/Champbreed)</small> | <small>Simon Essien</small> |  | <small>[simonessien01​@gmail.com](mailto:simonessien01@gmail.com)</small> | 🔵 | <small>2026-11-19</small> |  |
 | 43 | <small>[jblaher](https://github.com/jblaher)</small> | <small>Josh Blaher</small> |  | <small>[linked-in](https://www.linkedin.com/in/josh-blaher/)</small> | 🔵 |  |  |
 | 44 | <small>[Prarthana-1910](https://github.com/Prarthana-1910)</small> | <small>Prarthana Patil</small> |  | <small>[prarthanapatil2006​@gmail.com](mailto:prarthanapatil2006@gmail.com)</small> | 🔵 |  |  |
 | 45 | <small>[itsgnani](https://github.com/itsgnani)</small> | <small>Gnanendra Avvaru</small> |  | <small>[gnani​@wald.ai](mailto:gnani@wald.ai)</small> | 🔵 |  |  |
