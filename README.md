@@ -35,7 +35,7 @@
 | 11 | <small>[aavarca](https://github.com/aavarca)</small> | <small>Anthony Avarca</small> | <small>Argonne National Laboratory</small> | <small>[aavarca​@anl.gov](mailto:aavarca@anl.gov)</small> | 🟡 | <small>2026-11-18</small> |  |
 | 12 | <small>[msantore](https://github.com/msantore)</small> | <small>MSantore</small> | <small>@blockskunk </small> | <small>[x](https://twitter.com/santoretech)</small> | 🟡 | <small>2026-11-18</small> |  |
 | 13 | <small>[akramIOT](https://github.com/akramIOT)</small> | <small>Akram Sheriff</small> | <small>CISCO SYSTEMS, CA</small> | <small>[sheriff.akram​@gmail.com](mailto:sheriff.akram@gmail.com)</small> | 🟡 | <small>2026-11-18</small> |  |
-| 14 | <small>[nynymike](https://github.com/nynymike)</small> | <small>Michael Schwartz</small> | <small>Gluu</small> | <small>[x](https://twitter.com/nynymike)</small> | 🟡 |  |  |
+| 14 | <small>[nynymike](https://github.com/nynymike)</small> | <small>Michael Schwartz</small> | <small>Gluu</small> | <small>[linked-in](https://www.linkedin.com/in/nynymike/)</small> | 🟡 | <small>2026-11-19</small> |  |
 | 15 | <small>[JDziurlaj](https://github.com/JDziurlaj)</small> | <small>John Dziurlaj</small> | <small>@HiltonRoscoe </small> | <small>[john​@hiltonroscoe.com](mailto:john@hiltonroscoe.com)</small> | 🟡 |  |  |
 | 16 | <small>[gvlx](https://github.com/gvlx)</small> | <small>Gerardo Lisboa</small> | <small>INFO-CARE</small> | <small>[linked-in](https://www.linkedin.com/in/gerardolisboa/)</small> | 🟡 | <small>2026-11-18</small> |  |
 | 17 | <small>[cooljeanius](https://github.com/cooljeanius)</small> | <small>Eric Gallager</small> | <small>NH House of Representatives</small> | <small>[linked-in](https://www.linkedin.com/in/eric-gallager-44118a34/)</small> | 🟡 |  |  |
