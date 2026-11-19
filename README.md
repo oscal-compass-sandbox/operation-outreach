@@ -44,7 +44,7 @@
 | 20 | <small>[ethanolivertroy](https://github.com/ethanolivertroy)</small> | <small>Ethan Troy</small> | <small>SpaceXSI</small> | <small>[x](https://x.com/ethantroy)</small> | 🟡 |  |  |
 | 21 | <small>[masteinhauser](https://github.com/masteinhauser)</small> | <small>Myles Steinhauser</small> | <small>@teamportage</small> | <small>[x](https://twitter.com/masteinhauser)</small> | 🟡 |  |  |
 | 22 | <small>[WandererJackalope](https://github.com/WandererJackalope)</small> | <small>Jackson Bailey</small> | <small>@ttitamu @oSTEM </small> | <small>[jackson​@jrbailey.tools](mailto:jackson@jrbailey.tools)</small> | 🟡 |  |  |
-| 23 | <small>[topperge](https://github.com/topperge)</small> | <small>Matt Topper</small> | <small>UberEther</small> | <small>[matt​@matttopper.com](mailto:matt@matttopper.com)</small> | 🟡 |  |  |
+| 23 | <small>[topperge](https://github.com/topperge)</small> | <small>Matt Topper</small> | <small>UberEther</small> | <small>[matt​@matttopper.com](mailto:matt@matttopper.com)</small> | 🟡 | <small>2026-11-19</small> |  |
 | 24 | <small>[hagdahl](https://github.com/hagdahl)</small> | <small>David Hagdahl</small> |  | <small>[david​@hagdahl.se](mailto:david@hagdahl.se)</small> | 🔵 |  |  |
 | 25 | <small>[sdouche](https://github.com/sdouche)</small> | <small>Sébastien Douche</small> |  | <small>[seb​@nmeos.net](mailto:seb@nmeos.net)</small> | 🔵 |  |  |
 | 26 | <small>[georgalis](https://github.com/georgalis)</small> | <small>George Georgalis</small> |  | <small>[george​@galis.org](mailto:george@galis.org)</small> | 🔵 |  |  |
