@@ -5,8 +5,8 @@
 | key | meaning | org count<sup>1</sup> | person count<sup>2</sup> |
 |:------:|---------|----------------------:|-------------------------:|
 | 🟣 | administrative | 1 | 0 |
-| 🟢 | adopter | 3 | 0 |
-| 🟡 | contact pending | 13 | 0 |
+| 🟢 | adopter | 4 | 0 |
+| 🟡 | contact pending | 12 | 0 |
 | 🔵 | contact pending, need org | 0 | 21 |
 | 🟤 | bad contact info | 0 | 0 |
 | 🔴 | no contact info | 6 | 0 |
@@ -26,18 +26,18 @@
 | 2 | <small>[degenaro](https://github.com/degenaro)</small> | <small>Lou DeGenaro</small> | <small>IBM</small> | <small>[lou.degenaro​@gmail.com](mailto:lou.degenaro@gmail.com)</small> | 🟢 |  |  |
 | 3 | <small>[weihoran](https://github.com/weihoran)</small> | <small>horan</small> | <small>IBM</small> | <small>[442460904​@qq.com](mailto:442460904@qq.com)</small> | 🟢 |  |  |
 | 4 | <small>[yana1205](https://github.com/yana1205)</small> | <small>Takumi Yanagawa</small> | <small>IBM</small> | <small>[YANA​@jp.ibm.com](mailto:YANA@jp.ibm.com)</small> | 🟢 |  |  |
-| 5 | <small>[jflowers](https://github.com/jflowers)</small> | <small>Jay Flowers</small> | <small>Red Hat</small> | <small>[jflowers​@redhat.com](mailto:jflowers@redhat.com)</small> | 🟢 |  |  |
-| 6 | <small>[michaelepley](https://github.com/michaelepley)</small> | <small>Michael Epley</small> | <small>Red Hat</small> | <small>[michaelepley​@gmail.com](mailto:michaelepley@gmail.com)</small> | 🟢 |  |  |
-| 7 | <small>[huiwangredhat](https://github.com/huiwangredhat)</small> | <small>Sophia Wang</small> | <small>Red Hat</small> | <small>[huiwang​@redhat.com](mailto:huiwang@redhat.com)</small> | 🟢 |  |  |
-| 8 | <small>[brittanyhuntzberry](https://github.com/brittanyhuntzberry)</small> | <small>Brittany Huntzberry</small> | <small>Red Hat</small> | <small>[brittanyhuntzberry​@gmail.com](mailto:brittanyhuntzberry@gmail.com)</small> | 🟢 |  |  |
-| 9 | <small>[jpower432](https://github.com/jpower432)</small> | <small>Jennifer Power</small> | <small>Red Hat</small> | <small>[jpower​@redhat.com](mailto:jpower@redhat.com)</small> | 🟢 |  |  |
-| 10 | <small>[hbraswelrh](https://github.com/hbraswelrh)</small> | <small>Hannah Braswell</small> | <small>Red Hat</small> | <small>[linked-in](https://www.linkedin.com/in/hannah-braswell-414887221/)</small> | 🟢 |  |  |
-| 11 | <small>[sunstonesecure-robert](https://github.com/sunstonesecure-robert)</small> | <small>Robert Ficcaglia</small> | <small>Sunstone Secure, LLC</small> | <small>[rficcaglia​@sunstonesecure.com](mailto:rficcaglia@sunstonesecure.com)</small> | 🟢 |  |  |
-| 12 | <small>[aavarca](https://github.com/aavarca)</small> | <small>Anthony Avarca</small> | <small>Argonne National Laboratory</small> | <small>[aavarca​@anl.gov](mailto:aavarca@anl.gov)</small> | 🟡 | <small>2026-11-18</small> |  |
-| 13 | <small>[msantore](https://github.com/msantore)</small> | <small>MSantore</small> | <small>@blockskunk </small> | <small>[x](https://twitter.com/santoretech)</small> | 🟡 | <small>2026-11-18</small> |  |
-| 14 | <small>[akramIOT](https://github.com/akramIOT)</small> | <small>Akram Sheriff</small> | <small>CISCO SYSTEMS, CA</small> | <small>[sheriff.akram​@gmail.com](mailto:sheriff.akram@gmail.com)</small> | 🟡 | <small>2026-11-18</small> |  |
-| 15 | <small>[mlammerse](https://github.com/mlammerse)</small> | <small>Marcel Lammerse</small> | <small>Cyber Sense</small> | <small>[mlammerse​@cybersense.io](mailto:mlammerse@cybersense.io)</small> | 🟡 | <small>2026-11-19</small> |  |
-| 16 | <small>[nynymike](https://github.com/nynymike)</small> | <small>Michael Schwartz</small> | <small>Gluu</small> | <small>[linked-in](https://www.linkedin.com/in/nynymike/)</small> | 🟡 | <small>2026-11-19</small> |  |
+| 5 | <small>[nynymike](https://github.com/nynymike)</small> | <small>Michael Schwartz</small> | <small>OWASP GovOps Working Group</small> | <small>[linked-in](https://www.linkedin.com/in/nynymike/)</small> | 🟢 |  |  |
+| 6 | <small>[jflowers](https://github.com/jflowers)</small> | <small>Jay Flowers</small> | <small>Red Hat</small> | <small>[jflowers​@redhat.com](mailto:jflowers@redhat.com)</small> | 🟢 |  |  |
+| 7 | <small>[michaelepley](https://github.com/michaelepley)</small> | <small>Michael Epley</small> | <small>Red Hat</small> | <small>[michaelepley​@gmail.com](mailto:michaelepley@gmail.com)</small> | 🟢 |  |  |
+| 8 | <small>[huiwangredhat](https://github.com/huiwangredhat)</small> | <small>Sophia Wang</small> | <small>Red Hat</small> | <small>[huiwang​@redhat.com](mailto:huiwang@redhat.com)</small> | 🟢 |  |  |
+| 9 | <small>[brittanyhuntzberry](https://github.com/brittanyhuntzberry)</small> | <small>Brittany Huntzberry</small> | <small>Red Hat</small> | <small>[brittanyhuntzberry​@gmail.com](mailto:brittanyhuntzberry@gmail.com)</small> | 🟢 |  |  |
+| 10 | <small>[jpower432](https://github.com/jpower432)</small> | <small>Jennifer Power</small> | <small>Red Hat</small> | <small>[jpower​@redhat.com](mailto:jpower@redhat.com)</small> | 🟢 |  |  |
+| 11 | <small>[hbraswelrh](https://github.com/hbraswelrh)</small> | <small>Hannah Braswell</small> | <small>Red Hat</small> | <small>[linked-in](https://www.linkedin.com/in/hannah-braswell-414887221/)</small> | 🟢 |  |  |
+| 12 | <small>[sunstonesecure-robert](https://github.com/sunstonesecure-robert)</small> | <small>Robert Ficcaglia</small> | <small>Sunstone Secure, LLC</small> | <small>[rficcaglia​@sunstonesecure.com](mailto:rficcaglia@sunstonesecure.com)</small> | 🟢 |  |  |
+| 13 | <small>[aavarca](https://github.com/aavarca)</small> | <small>Anthony Avarca</small> | <small>Argonne National Laboratory</small> | <small>[aavarca​@anl.gov](mailto:aavarca@anl.gov)</small> | 🟡 | <small>2026-11-18</small> |  |
+| 14 | <small>[msantore](https://github.com/msantore)</small> | <small>MSantore</small> | <small>@blockskunk </small> | <small>[x](https://twitter.com/santoretech)</small> | 🟡 | <small>2026-11-18</small> |  |
+| 15 | <small>[akramIOT](https://github.com/akramIOT)</small> | <small>Akram Sheriff</small> | <small>CISCO SYSTEMS, CA</small> | <small>[sheriff.akram​@gmail.com](mailto:sheriff.akram@gmail.com)</small> | 🟡 | <small>2026-11-18</small> |  |
+| 16 | <small>[mlammerse](https://github.com/mlammerse)</small> | <small>Marcel Lammerse</small> | <small>Cyber Sense</small> | <small>[mlammerse​@cybersense.io](mailto:mlammerse@cybersense.io)</small> | 🟡 | <small>2026-11-19</small> |  |
 | 17 | <small>[JDziurlaj](https://github.com/JDziurlaj)</small> | <small>John Dziurlaj</small> | <small>@HiltonRoscoe </small> | <small>[john​@hiltonroscoe.com](mailto:john@hiltonroscoe.com)</small> | 🟡 | <small>2026-11-19</small> |  |
 | 18 | <small>[gvlx](https://github.com/gvlx)</small> | <small>Gerardo Lisboa</small> | <small>INFO-CARE</small> | <small>[linked-in](https://www.linkedin.com/in/gerardolisboa/)</small> | 🟡 | <small>2026-11-18</small> |  |
 | 19 | <small>[cooljeanius](https://github.com/cooljeanius)</small> | <small>Eric Gallager</small> | <small>NH House of Representatives</small> | <small>[linked-in](https://www.linkedin.com/in/eric-gallager-44118a34/)</small> | 🟡 |  |  |
